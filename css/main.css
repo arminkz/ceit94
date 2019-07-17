@@ -8,6 +8,10 @@ body{
     background-color: #141414;
     color: #FFF;
     font-family: 'Arapix';
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .lp-logo{
@@ -40,6 +44,10 @@ body{
     text-transform: uppercase;
     padding: 5px 50px;
     margin: 0 10px;
+}
+
+.lp-button-panel button:focus {
+    outline:0;
 }
 
 .lp-button-panel button:hover{
