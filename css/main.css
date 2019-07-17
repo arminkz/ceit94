@@ -44,7 +44,7 @@ body{
     margin: 0 10px;
     font-size: 30px;
     width: 170px;
-    transition: background-color 0.15s;
+    transition: background-color 0.15s, color 0.15s;
 }
 
 .lp-button-panel button:focus {
@@ -52,7 +52,7 @@ body{
 }
 
 .lp-button-panel button:hover{
-    background-color: #c60139;
+    background-color: #c70039;
     color: #FFF;
     border: 2px solid #FFF;
 }
@@ -68,7 +68,7 @@ body{
     position: absolute;
     margin: 0;
     z-index: 20;
-    opacity: 0.20;
+    opacity: 0.03;
 }
 
 .lp-logo-img{
