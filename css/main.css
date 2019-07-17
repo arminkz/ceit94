@@ -16,11 +16,11 @@ body{
 
 .lp-logo{
     display: block;
-    width: 450px;
-    height: 450px;
+    height: 60vh;
+    width: 60vh;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 17vh;
+    margin-top: 14vh;
     /*border: 1px solid red;*/
 }
 
@@ -30,7 +30,7 @@ body{
     height: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 3vh;
+    margin-top: 2vh;
     /*border: 1px solid green;*/
     text-align: center;
 }
@@ -38,7 +38,7 @@ body{
 .lp-button-panel button{
     background-color: transparent;
     color: #ffffff4f;;
-    border: 2px solid #ffffff4f;;
+    border: 1px solid #ffffff4f;;
     border-radius: 27px;
     text-transform: uppercase;
     margin: 0 10px;
@@ -54,7 +54,7 @@ body{
 .lp-button-panel button:hover{
     background-color: #c70039;
     color: #FFF;
-    border: 2px solid #FFF;
+    border: 1px solid #FFF;
 }
 
 .lp-logo-wrap{
@@ -66,15 +66,17 @@ body{
 .lp-logo svg{
     display: block;
     position: absolute;
+    height: 60vh;
+    width: 60vh;
     margin: 0;
     z-index: 20;
-    opacity: 0.03;
+    opacity: 0.06;
 }
 
 .lp-logo-img{
     display: block;
-    width:300px;
-    height: 300px;
+    width: 38vh;
+    height: 38vh;
     position: absolute;
     top: 50%;
     left: 50%;
