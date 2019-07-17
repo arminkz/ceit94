@@ -16,11 +16,11 @@ body{
 
 .lp-logo{
     display: block;
-    width: 388px;
-    height: 388px;
+    width: 420px;
+    height: 420px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 17vh;
+    margin-top: 20vh;
     /*border: 1px solid red;*/
 }
 
@@ -30,7 +30,7 @@ body{
     height: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5vh;
+    margin-top: 3vh;
     /*border: 1px solid green;*/
     text-align: center;
 }
@@ -71,8 +71,8 @@ body{
 
 .lp-logo-img{
     display: block;
-    width:250px;
-    height: 250px;
+    width:300px;
+    height: 300px;
     position: absolute;
     top: 50%;
     left: 50%;
