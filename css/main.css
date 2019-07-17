@@ -42,8 +42,13 @@ body{
     border: 1px solid #FFF;
     border-radius: 27px;
     text-transform: uppercase;
-    padding: 5px 50px;
     margin: 0 10px;
+    width: 139px;
+    height: 39px;
+    font-size: 30px;
+    border-radius: 27px;
+    border: solid 1px #ffffff4f;
+
 }
 
 .lp-button-panel button:focus {
@@ -99,24 +104,32 @@ body{
 }
 
 .lp-countdown-label{
-    display: block;
+    display: flex;
+    flex-direction: row;
     text-align: center;
     opacity: 0.4;
     font-size: 25px;
     height: 40px;
     text-transform: uppercase;
-    margin-top: -17px;
+    margin-top: -5px;
     margin-bottom: 0px;
+    margin-left: 49;
+    margin-right: 38px;
+
+}
+#spacer {
+    flex: 1;
 }
 
 .lp-countdown-rem{
     display: block;
     text-align: center;
     opacity: 0.4;
-    font-size: 25px;
+    font-size: 24px;
     height: 40px;
     text-transform: uppercase;
-    letter-spacing: 10px;
+    letter-spacing: 18px;
     margin-top: -10px;
     margin-bottom: 0px;
+    margin-left: 20px;
 }
