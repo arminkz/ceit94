@@ -38,17 +38,13 @@ body{
 .lp-button-panel button{
     background-color: transparent;
     color: #FFF;
-    font-size: 23px;
     border: 1px solid #FFF;
     border-radius: 27px;
     text-transform: uppercase;
     margin: 0 10px;
-    width: 139px;
-    height: 39px;
     font-size: 30px;
-    border-radius: 27px;
-    border: solid 1px #ffffff4f;
-
+    width: 170px;
+    transition: background-color 0.15s;
 }
 
 .lp-button-panel button:focus {
@@ -70,7 +66,7 @@ body{
     position: absolute;
     margin: 0;
     z-index: 20;
-    opacity: 0.50;
+    opacity: 0.20;
 }
 
 .lp-logo-img{
@@ -113,7 +109,7 @@ body{
     text-transform: uppercase;
     margin-top: -5px;
     margin-bottom: 0px;
-    margin-left: 49;
+    margin-left: 49px;
     margin-right: 38px;
 
 }
