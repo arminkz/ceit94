@@ -14,6 +14,31 @@ body{
     -ms-user-select: none;
 }
 
+.lp-main{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.shadow{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 60;
+    pointer-events: none;
+}
+
+.shadow svg{
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+}
+
 .lp-logo{
     display: block;
     height: 60vh;
