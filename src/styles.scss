@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: normal;
+  src: url('assets/fonts/IRANSansWeb.eot');
+  src: url('assets/fonts/IRANSansWeb.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+  url('assets/fonts/IRANSansWeb.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+  url('assets/fonts/IRANSansWeb.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('assets/fonts/IRANSansWeb.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Arapix;
+  src: url("assets/fonts/Arapix.woff") format("woff"),
+  url("assets/fonts/Arapix.otf") format("opentype");
+}
+
+html {
+  background-color: #141414;
+}

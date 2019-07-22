@@ -1,0 +1,116 @@
+.top {
+  width: 100%;
+  text-align: right;
+  background-color: #141414;
+
+  .navbar-logo {
+    width: 72px;
+    height: 72px;
+    margin-top:8px;
+    margin-right: 16px;
+  }
+}
+
+.main{
+  background-color: #141414;
+}
+
+.login-box{
+  //border: 1px solid #FFF;
+  border-radius: 10.5px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #242424;
+  margin-top: 35px;
+
+  .spacer{
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #c60139;
+  }
+
+  .login-lbl{
+    font-family: IRANSans;
+    margin-top: 27px;
+    margin-bottom: 25px;
+    font-size: 16.5px;
+    color: #a6a6a6;
+    text-align: center;
+  }
+
+  .input-box:focus-within{
+    //box-shadow: 0 0 5px #a5002f;
+    border: solid 2.5px #a5002f;
+
+    input{
+      color: #FFF;
+    }
+
+    .input-icon{
+      fill: #a5002f;
+    }
+  }
+
+  .input-box{
+    border-radius: 3.5px;
+    background-color: #1c1c1c;
+    border: solid 2.5px transparent;
+    margin-top:13px;
+
+    input{
+      text-align: center;
+      background-color: transparent;
+      color: #FFF;
+      border: none;
+      font-size: 15px;
+      font-family: IRANSans;
+      padding: 0 0 0 15px;
+    }
+
+    input:focus{
+      box-shadow: none;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+
+  }
+
+  .input-icon{
+    width: 18.5px;
+    height: 18.5px;
+    margin: 18px;
+    fill:#595959;
+    fill-rule:evenodd;
+  }
+
+  .login-buttons-row{
+    margin-top: 54px;
+    margin-bottom: 43px;
+
+    button{
+      width: 100%;
+      font-family: IRANSans;
+      font-size: 15px;
+      padding: 9px;
+      border-radius: 3.5px;
+      color: #FFF;
+      background-color: transparent;
+      border: solid 1px #c60139;
+      outline: none;
+    }
+
+    button:hover{
+      border: solid 1px #FFF;
+    }
+
+    button.fill{
+      background-color: #c60139;
+    }
+  }
+}
+
+
