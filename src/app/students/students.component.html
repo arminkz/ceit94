@@ -20,7 +20,7 @@
             <!--Search Bar-->
             <div class="row no-gutters align-items-center search-box">
               <div class="col">
-                <input class="form-control form-control-lg" type="search" placeholder="جستجو">
+                <input [(ngModel)]="searchText" class="form-control form-control-lg" type="search" placeholder="جستجو">
               </div>
               <div class="col-auto">
                 <svg class="search-icon" xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@
 
         <div class="row std-card-row justify-content-end">
 
-          <div *ngFor="let student of students" class="col-2">
+          <div *ngFor="let student of students | filter: searchText" (click)="clickedStudent(student)" class="col-2">
             <div class="std-card">
               <img *ngIf="!student.profile_pic" src="../../assets/profile.jpg" alt=""/>
               <img *ngIf="student.profile_pic" [src]="student.profile_pic" alt=""/>
