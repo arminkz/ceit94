@@ -1,7 +1,7 @@
 import {Music} from './music.model';
 
 export class Student {
-  id: number;
+  username: string;
   profile_pic?: string;
   fname: string;
   lname: string;
