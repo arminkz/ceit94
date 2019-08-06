@@ -1,14 +1,4 @@
-.main {
-  height: 100%;
-  width: 100%;
-  background-color: #141414;
-  color: #FFF;
-  font-family: Arapix;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
+/*
 
 .lp-main{
   position: absolute;
@@ -19,87 +9,56 @@
   z-index: 0;
 }
 
-.shadow{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  z-index: 60;
-  pointer-events: none;
+
+*/
+
+.border-red{
+  border: solid 1px #F00;
 }
 
-.shadow svg{
-  width: 100%;
-  height: 100%;
-  opacity: 0.3;
+.border-green{
+  border: solid 1px #0F0;
+}
+
+.lp-main {
+  background-color: #141414;
+  color: #FFF;
+  padding: 0;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .lp-logo{
   display: block;
-  height: 60vh;
-  width: 60vh;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 14vh;
-  /*border: 1px solid red;*/
-}
-
-.lp-button-panel{
-  display: block;
-  width: 500px;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2vh;
-  /*border: 1px solid green;*/
-  text-align: center;
-}
-
-.lp-button-panel button{
-  background-color: transparent;
-  color: #ffffff4f;;
-  border: 1px solid #ffffff4f;;
-  border-radius: 27px;
-  text-transform: uppercase;
-  margin: 0 10px;
-  font-size: 30px;
-  width: 170px;
-  transition: background-color 0.15s, color 0.15s;
-}
-
-.lp-button-panel button:focus {
-  outline:0;
-}
-
-.lp-button-panel button:hover{
-  background-color: #c70039;
-  color: #FFF;
-  border: 1px solid #FFF;
+  width: 100%;
+  height: 190px;
+  margin-top: 50vh;
 }
 
 .lp-logo-wrap{
+  display: block;
   position: relative;
   width: 100%;
-  height: 100%;
+  max-width: 388px;
+  left:50%;
+  transform: translateX(-50%);
 }
 
 .lp-logo svg{
   display: block;
   position: absolute;
-  height: 60vh;
-  width: 60vh;
-  margin: 0;
+  width: 100%;
+  transform: translateY(-50%);
   z-index: 20;
   opacity: 0.06;
 }
 
-.lp-logo-img{
+.lp-logo img{
   display: block;
-  width: 38vh;
-  height: 38vh;
   position: absolute;
-  top: 50%;
+  width: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   z-index: 19;
@@ -112,7 +71,14 @@
   top: 0;
   width: 300px;
   height: 150px;
-  /*border: 1px solid red;*/
+  font-family: Arapix;
+  color: #FFF;
+}
+
+@media screen and (max-width: 600px) {
+  .lp-countdown{
+    display: none;
+  }
 }
 
 .lp-countdown-time{
@@ -135,7 +101,7 @@
   margin: -5px 38px 0px 49px;
 
 }
-#spacer {
+.spacer {
   flex: 1;
 }
 
@@ -151,3 +117,54 @@
   margin-bottom: 0px;
   margin-left: 20px;
 }
+
+.lp-button-panel{
+  display: block;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2vh;
+  text-align: center;
+  font-family: Arapix;
+}
+
+.lp-button-panel button{
+  background-color: transparent;
+  color: #ffffff4f;;
+  border: 1px solid #ffffff4f;;
+  border-radius: 27px;
+  text-transform: uppercase;
+  margin: 10px;
+  font-size: 30px;
+  width: 170px;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.lp-button-panel button:focus {
+  outline:0;
+}
+
+.lp-button-panel button:hover{
+  background-color: #c70039;
+  color: #FFF;
+  border: 1px solid #FFF;
+}
+
+.shadow{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.shadow svg{
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+
+
