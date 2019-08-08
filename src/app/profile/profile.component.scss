@@ -32,6 +32,14 @@
   background-color: #1c1c1c;
 }
 
+@media screen and (max-width: 767px) {
+  .sidebar{
+    position: inherit;
+    height: auto;
+    padding-bottom: 20px;
+  }
+}
+
 .bio-row{
   font-family: IRANSans;
   font-size: 13.5px;
@@ -58,13 +66,13 @@
 $section-space : 20px;
 
 .main-area{
-  padding: $section-space 0 0 $section-space;
+  padding: $section-space 0 0 0;
 }
 
 .section{
   background-color: #1c1c1c;
   border-radius: 13px;
-  margin: 0 $section-space $section-space 0;
+  margin: $section-space;
 
   .col{
     padding: 0;
@@ -72,8 +80,54 @@ $section-space : 20px;
 }
 
 .section2{
-  padding: 0 $section-space $section-space 0;
+  //padding: 0 $section-space $section-space 0;
   height: 100%;
+
+  .section{
+    height: 100%;
+    margin: $section-space $section-space $section-space 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .section2{
+    height: auto;
+
+    .section{
+      height: auto;
+      margin: $section-space;
+    }
+  }
+}
+
+.dual-section{
+  .section{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .section2{
+    .section{
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .dual-section{
+    .section{
+      margin-top: 0;
+      margin-bottom: $section-space;
+    }
+
+    .section2{
+      .section{
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+    }
+  }
 }
 
 .section-title{
