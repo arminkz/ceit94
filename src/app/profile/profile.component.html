@@ -20,8 +20,8 @@
           <div class="col-center">
             <div class="profile-pic-spacer">
               <div class="profile-pic-spacer-2">
-                <img *ngIf="student.profile_pic" class="profile-pic" [src]="student.profile_pic" alt=""/>
-                <img *ngIf="!student.profile_pic" class="profile-pic" src="../../assets/profile.jpg" alt=""/>
+                <img *ngIf="student.profile_pic" class="profile-pic" [ngClass]="setColorClass()" [src]="student.profile_pic" alt=""/>
+                <img *ngIf="!student.profile_pic" class="profile-pic" [ngClass]="setColorClass()" src="../../assets/profile.jpg" alt=""/>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@
           <div class="col-center">
 
             <a *ngIf="student.link_github" class="social-button" id="github"  [href]="student.link_github" target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.431 35.159">
+              <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="setColorClass()" viewBox="0 0 36.431 35.159">
                 <g id="gh">
                   <path d="M154.448 352.518q-.38.071-.332.356t.427.19q.38-.095.332-.332-.048-.262-.427-.214z" class="cls-1" data-name="Path 20" transform="translate(-141.308 -324.498)"/>
                   <path d="M137.709 354.815c-.253 0-.379.086-.379.261q0 .308.4.261.38 0 .38-.261.003-.309-.401-.261z" class="cls-1" data-name="Path 21" transform="translate(-125.921 -326.605)"/>
@@ -71,19 +71,19 @@
             </a>
 
             <a *ngIf="student.link_linkedin" class="social-button" id="linkedin"  [href]="student.link_linkedin" target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.43 35.159">
+              <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="setColorClass()" viewBox="0 0 36.43 35.159">
                 <path id="Path_19" d="M34.429 1.934A6.7 6.7 0 0 0 29.6 0H6.834a6.7 6.7 0 0 0-4.827 1.934A6.241 6.241 0 0 0 0 6.592v21.975a6.242 6.242 0 0 0 2 4.658 6.7 6.7 0 0 0 4.827 1.934H29.6a6.7 6.7 0 0 0 4.826-1.934 6.241 6.241 0 0 0 2-4.658V6.592a6.242 6.242 0 0 0-1.997-4.658zM11.1 29.436H5.624V13.551H11.1v15.885zm-.5-18.827a3.187 3.187 0 0 1-2.253.79h-.019a3.077 3.077 0 0 1-2.194-.79 2.574 2.574 0 0 1-.842-1.957 2.534 2.534 0 0 1 .866-1.969A3.226 3.226 0 0 1 8.4 5.905a3.1 3.1 0 0 1 2.206.778 2.66 2.66 0 0 1 .854 1.969 2.56 2.56 0 0 1-.855 1.958zm20.213 18.827h-5.479v-8.492q0-3.593-2.751-3.594a2.747 2.747 0 0 0-1.755.561 3.538 3.538 0 0 0-1.067 1.362 3.653 3.653 0 0 0-.166 1.281v8.881h-5.48q.071-14.375 0-15.886h5.479v2.243a5.551 5.551 0 0 1 4.91-2.609 6.046 6.046 0 0 1 4.578 1.808 7.43 7.43 0 0 1 1.731 5.333v9.111z"/>
               </svg>
             </a>
 
             <a *ngIf="student.link_instagram" class="social-button" id="instagram"  [href]="student.link_instagram" target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="setColorClass()" viewBox="0 0 512 512">
                 <path d="M256,152c-57.9,0-105,47.1-105,105s47.1,105,105,105s105-47.1,105-105S313.9,152,256,152z M256,152   c-57.9,0-105,47.1-105,105s47.1,105,105,105s105-47.1,105-105S313.9,152,256,152z M437,0H75C33.6,0,0,33.6,0,75v362   c0,41.4,33.6,75,75,75h362c41.4,0,75-33.6,75-75V75C512,33.6,478.4,0,437,0z M256,392c-74.399,0-135-60.601-135-135   c0-74.401,60.601-135,135-135s135,60.599,135,135C391,331.399,330.399,392,256,392z M421,122c-16.5,0-30-13.5-30-30s13.5-30,30-30   s30,13.5,30,30S437.5,122,421,122z M256,152c-57.9,0-105,47.1-105,105s47.1,105,105,105s105-47.1,105-105S313.9,152,256,152z    M256,152c-57.9,0-105,47.1-105,105s47.1,105,105,105s105-47.1,105-105S313.9,152,256,152z M256,152c-57.9,0-105,47.1-105,105   s47.1,105,105,105s105-47.1,105-105S313.9,152,256,152z"/>
               </svg>
             </a>
 
             <a *ngIf="student.link_twitter" class="social-button" id="twitter" [href]="student.link_twitter" target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.833 35.833">
+              <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="setColorClass()" viewBox="0 0 35.833 35.833">
                 <path id="Path_28" d="M33.864 1.971A6.47 6.47 0 0 0 29.117 0H6.722a6.472 6.472 0 0 0-4.748 1.971A6.472 6.472 0 0 0 0 6.719v22.4a6.473 6.473 0 0 0 1.971 4.748 6.472 6.472 0 0 0 4.748 1.971h22.4a6.731 6.731 0 0 0 6.718-6.719v-22.4a6.473 6.473 0 0 0-1.973-4.748zm-6.45 11.816a6.185 6.185 0 0 1 .024.63 14.116 14.116 0 0 1-2.321 7.71 14.7 14.7 0 0 1-2.811 3.2 12.617 12.617 0 0 1-3.919 2.216 14.263 14.263 0 0 1-4.9.829 13.748 13.748 0 0 1-7.512-2.193 9.454 9.454 0 0 0 1.166.07 9.679 9.679 0 0 0 6.089-2.1 4.648 4.648 0 0 1-2.834-.98 4.979 4.979 0 0 1-1.738-2.426 6.569 6.569 0 0 0 .91.093 4.56 4.56 0 0 0 1.19-.186 4.9 4.9 0 0 1-2.869-1.691 4.658 4.658 0 0 1-1.167-3.114v-.047a5.785 5.785 0 0 0 2.333.606 4.621 4.621 0 0 1-2.123-4.083 4.852 4.852 0 0 1 .676-2.473 13.886 13.886 0 0 0 4.479 3.616 13.87 13.87 0 0 0 5.646 1.516 4.5 4.5 0 0 1-.117-1.12 4.9 4.9 0 0 1 4.9-4.9 4.656 4.656 0 0 1 3.57 1.54 9.745 9.745 0 0 0 3.126-1.19 4.764 4.764 0 0 1-2.169 2.729 10.385 10.385 0 0 0 2.822-.793 9.527 9.527 0 0 1-2.451 2.541z" class="cls-1" data-name="Path 28" transform="translate(-.003)"/>
               </svg>
             </a>
@@ -111,7 +111,7 @@
               <div class="col">
                 <div class="section-title">
                   <p class="section-label">آهنگ مورد علاقه</p>
-                  <svg class="section-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.068 41.963">
+                  <svg class="section-logo" [ngClass]="setColorClass()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.068 41.963">
                     <path d="M90.625 26.869a18.2 18.2 0 0 0 2.337-7.856 10.713 10.713 0 0 0-1.13-5.323c-1.327-2.718-3.606-4.245-5.808-5.72a16.419 16.419 0 0 1-4.294-3.625l-.2-.265a7.146 7.146 0 0 1-1.5-2.689A1.632 1.632 0 0 0 78.326 0a1.61 1.61 0 0 0-1.5 1.608v28.765a9.338 9.338 0 0 0-4.842-1.324c-4.448 0-8.071 2.9-8.071 6.456s3.622 6.456 8.071 6.456 8.071-2.9 8.071-6.456V16.692a11.619 11.619 0 0 1 7.483 8.8 9.106 9.106 0 0 1-.623.881 1.613 1.613 0 1 0 2.419 2.127 12 12 0 0 0 1.185-1.666c.039-.044.074.09.106.035z" transform="translate(-63.912)"/>
                   </svg>
                 </div>
@@ -135,7 +135,7 @@
                   <div class="col">
                     <div class="section-title">
                       <p class="section-label">مهارت ها</p>
-                      <svg class="section-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.923 42.072">
+                      <svg class="section-logo" [ngClass]="setColorClass()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.923 42.072">
                         <g transform="translate(3.541 32.123)">
                           <path id="Path_40" d="M10.532.741a5.227 5.227 0 0 1-5.921.886A5.394 5.394 0 0 1 2.79.214L.05 6.274a.512.512 0 0 0 .08.56A.512.512 0 0 0 .671 7l1.994-.555a2.541 2.541 0 0 1 2.973 1.342l.9 1.864a.527.527 0 0 0 .954-.012L11.85 0a3.27 3.27 0 0 0-1.318.741z"/>
                         </g>
@@ -168,15 +168,15 @@
           <div class="col">
             <div class="section-title">
               <p class="section-label">هشتگ ها</p>
-              <svg class="section-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 281.465 281.465">
+              <svg class="section-logo" [ngClass]="setColorClass()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 281.465 281.465">
                 <path d="M273.661,114.318V67.035h-45.558L236.886,0h-47.69l-8.783,67.035h-60.084L129.113,0H81.425L72.64,67.035H7.804v47.283	h58.649l-6.904,52.791H7.804v47.289h45.559l-8.784,67.066h47.687l8.787-67.066h60.083l-8.786,67.066h47.691l8.783-67.066h64.836 v-47.289h-58.647l6.901-52.791H273.661z M167.326,167.109h-60.084l6.9-52.791h60.082L167.326,167.109z"/>
               </svg>
             </div>
             <div class="row section-content-hashtag align-content-center no-gutters">
 
               <div class="col-auto">
-                <div class="row pf-hashtag no-gutters align-content-center">
-                  <div class="col-auto pf-hashtag-count">
+                <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
+                  <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">
                     <p>۳۲</p>
                   </div>
                   <div class="col-auto pf-hashtag-title">
@@ -186,8 +186,8 @@
               </div>
 
               <div class="col-auto">
-                <div class="row pf-hashtag no-gutters align-content-center">
-                  <div class="col-auto pf-hashtag-count">
+                <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
+                  <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">
                     <p>۱۶</p>
                   </div>
                   <div class="col-auto pf-hashtag-title">
@@ -197,8 +197,8 @@
               </div>
 
               <div class="col-auto">
-                <div class="row pf-hashtag no-gutters align-content-center">
-                  <div class="col-auto pf-hashtag-count">
+                <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
+                  <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">
                     <p>۱۶</p>
                   </div>
                   <div class="col-auto pf-hashtag-title">
@@ -208,8 +208,8 @@
               </div>
 
               <div class="col-auto">
-                <div class="row pf-hashtag no-gutters align-content-center">
-                  <div class="col-auto pf-hashtag-count">
+                <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
+                  <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">
                     <p>۱۶</p>
                   </div>
                   <div class="col-auto pf-hashtag-title">
@@ -219,8 +219,8 @@
               </div>
 
               <div class="col-auto">
-                <div class="row pf-hashtag no-gutters align-content-center">
-                  <div class="col-auto pf-hashtag-count">
+                <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
+                  <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">
                     <p>۱۶</p>
                   </div>
                   <div class="col-auto pf-hashtag-title">
@@ -230,8 +230,8 @@
               </div>
 
               <div class="col-auto">
-                <div class="row pf-hashtag no-gutters align-content-center">
-                  <div class="col-auto pf-hashtag-count">
+                <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
+                  <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">
                     <p>۱۶</p>
                   </div>
                   <div class="col-auto pf-hashtag-title">
@@ -248,7 +248,7 @@
           <div class="col">
             <div class="section-title">
               <p class="section-label">تایم لاین</p>
-              <svg class="section-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.5 44.001">
+              <svg class="section-logo" [ngClass]="setColorClass()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.5 44.001">
                 <g id="tl" transform="translate(0 .001)">
                   <path d="M83.947 91a1.371 1.371 0 0 1-.972-.4L77.2 84.822a1.375 1.375 0 0 1-.4-.972v-2.475A1.375 1.375 0 0 1 78.172 80h11.551a1.375 1.375 0 0 1 1.377 1.375v2.475a1.375 1.375 0 0 1-.4.972L84.919 90.6a1.369 1.369 0 0 1-.972.4zm-4.4-7.72l4.4 4.4 4.4-4.4v-.53h-8.8zm0 0" transform="translate(-70.197 -73.126)"/>
                   <path d="M26.125 41.25H24.75v-9.625a1.375 1.375 0 0 0-.4-.972L15.695 22l8.653-8.653a1.375 1.375 0 0 0 .4-.972V2.749h1.375a1.375 1.375 0 0 0 0-2.75H1.375a1.375 1.375 0 0 0 0 2.75H2.75v9.625a1.375 1.375 0 0 0 .4.972L11.806 22l-8.653 8.652a1.375 1.375 0 0 0-.4.972v9.626H1.375a1.375 1.375 0 0 0 0 2.75h24.75a1.375 1.375 0 0 0 0-2.75zM5.5 2.749H22V11.8l-8.25 8.25L5.5 11.8zm0 29.445l8.25-8.25 8.25 8.25v9.056H5.5zm0 0"/>
@@ -259,7 +259,7 @@
 
             <div class="row section-content-timeline no-gutters">
 
-              <div class="timeline">
+              <div class="timeline" [ngClass]="setColorClass()">
                 <div class="tl-container tl-left">
                   <div class="tl-content">
                     <img src="../../assets/britney.png" alt=""/>
@@ -294,7 +294,7 @@
           <div class="col">
             <div class="section-title">
               <p class="section-label">گالری</p>
-              <svg class="section-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42.059 41.967">
+              <svg class="section-logo" [ngClass]="setColorClass()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42.059 41.967">
                 <g transform="translate(0 -.05)">
                   <g transform="translate(0 .05)">
                     <path d="M6.47 29.154V11.062H3.7A3.712 3.712 0 0 0 0 14.784v24.461a3.7 3.7 0 0 0 3.7 3.707h24.46a3.724 3.724 0 0 0 3.73-3.707v-2.672h-18a7.456 7.456 0 0 1-7.42-7.419z" transform="translate(0 -.986)"/>
@@ -370,7 +370,7 @@
               <div class="col">
                 <div class="section-title">
                   <p class="section-label">محل مورد علاقه در دانشکده</p>
-                  <svg class="section-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41.238 38.469">
+                  <svg class="section-logo" [ngClass]="setColorClass()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41.238 38.469">
                     <path d="M37.524 12.19h-6.549v-6.9a3.717 3.717 0 0 0-3.712-3.74H14.124a3.737 3.737 0 0 0-3.735 3.741v6.9H3.763A3.785 3.785 0 0 0 0 15.96v20.311a3.766 3.766 0 0 0 3.763 3.747h33.761a3.724 3.724 0 0 0 3.713-3.747V15.96a3.743 3.743 0 0 0-3.713-3.77zM16.658 5.139h8.07a2.235 2.235 0 1 1 0 4.47h-8.07a2.235 2.235 0 1 1 0-4.47zM5.949 16.727a2.308 2.308 0 1 1 2.308 2.308 2.308 2.308 0 0 1-2.308-2.308zM20.61 36.781A10.777 10.777 0 1 1 31.388 26 10.778 10.778 0 0 1 20.61 36.781z" transform="translate(0 -1.55)"/>
                     <path d="M22.337 24.974a3.617 3.617 0 0 0-5.1 5.125l4.654 4.633a.64.64 0 0 0 .9 0c1.234-1.228 4.586-4.563 4.654-4.633a3.616 3.616 0 0 0-5.1-5.125z" transform="translate(-1.727 -3.939)"/>
                   </svg>
@@ -400,7 +400,7 @@
                   <div class="col">
                     <div class="section-title">
                       <p class="section-label">مصاحبه کوتاه</p>
-                      <svg class="section-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.923 42.072">
+                      <svg class="section-logo" [ngClass]="setColorClass()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.923 42.072">
                         <g transform="translate(3.541 32.123)">
                           <path id="Path_40" d="M10.532.741a5.227 5.227 0 0 1-5.921.886A5.394 5.394 0 0 1 2.79.214L.05 6.274a.512.512 0 0 0 .08.56A.512.512 0 0 0 .671 7l1.994-.555a2.541 2.541 0 0 1 2.973 1.342l.9 1.864a.527.527 0 0 0 .954-.012L11.85 0a3.27 3.27 0 0 0-1.318.741z"/>
                         </g>
@@ -434,7 +434,7 @@
           <div class="col">
             <div class="section-title">
               <p class="section-label">سخنی از آرمین</p>
-              <svg class="section-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44.924 38.012">
+              <svg class="section-logo" [ngClass]="setColorClass()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44.924 38.012">
                 <path d="M15.551 36.547H5.184a5 5 0 0 0-3.672 1.512A5 5 0 0 0 0 41.731V52.1a5 5 0 0 0 1.512 3.671 5 5 0 0 0 3.672 1.509h6.047a2.581 2.581 0 0 1 2.592 2.592v.863a6.659 6.659 0 0 1-2.023 4.887 6.66 6.66 0 0 1-4.887 2.024H5.184a1.662 1.662 0 0 0-1.215.513 1.66 1.66 0 0 0-.513 1.215v3.456a1.662 1.662 0 0 0 .513 1.215 1.663 1.663 0 0 0 1.215.513h1.727a13.47 13.47 0 0 0 5.359-1.094 13.925 13.925 0 0 0 4.414-2.956 13.93 13.93 0 0 0 2.956-4.414 13.466 13.466 0 0 0 1.093-5.359V41.73a5.161 5.161 0 0 0-5.183-5.183z" transform="translate(0 -36.547)"/>
                 <path d="M275.038 38.059a5 5 0 0 0-3.672-1.512H261a5.161 5.161 0 0 0-5.183 5.184V52.1A5.161 5.161 0 0 0 261 57.28h6.047a2.581 2.581 0 0 1 2.592 2.592v.863a6.913 6.913 0 0 1-6.911 6.911H261a1.753 1.753 0 0 0-1.728 1.728v3.456A1.753 1.753 0 0 0 261 74.559h1.728a13.47 13.47 0 0 0 5.359-1.094 13.693 13.693 0 0 0 7.37-7.37 13.466 13.466 0 0 0 1.093-5.359V41.73a5 5 0 0 0-1.512-3.671z" transform="translate(-231.627 -36.547)"/>
               </svg>

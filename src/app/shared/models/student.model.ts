@@ -5,6 +5,7 @@ export class Student {
   profile_pic?: string;
   fname: string;
   lname: string;
+  fav_color: number
   bio?: string;
   myquote?: string;
   faculty?: string;

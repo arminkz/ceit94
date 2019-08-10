@@ -22,4 +22,19 @@ export class ProfileComponent implements OnInit {
       .subscribe(student => this.student = student);
   }
 
+  setColorClass() {
+    const classes = {
+      c1: this.student.fav_color === 1,
+      c2: this.student.fav_color === 2,
+      c3: this.student.fav_color === 3,
+      c4: this.student.fav_color === 4,
+      c5: this.student.fav_color === 5,
+      c6: this.student.fav_color === 6,
+      c7: this.student.fav_color === 7,
+      c8: this.student.fav_color === 8
+    };
+
+    return classes;
+  }
+
 }

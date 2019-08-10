@@ -35,10 +35,10 @@
         <div class="row std-card-row justify-content-end">
 
           <div *ngFor="let student of students | filter: searchText" (click)="clickedStudent(student)" class="col-2">
-            <div class="std-card">
+            <div class="std-card" [ngClass]="getStudentColorClass(student)">
               <img *ngIf="!student.profile_pic" src="../../assets/profile.jpg" alt=""/>
               <img *ngIf="student.profile_pic" [src]="student.profile_pic" alt=""/>
-              <div class="spacer">
+              <div class="spacer" [ngClass]="getStudentColorClass(student)">
                 <div class="spacer-wrap">
                   <div class="spacer-inner"></div>
                 </div>

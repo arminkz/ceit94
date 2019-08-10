@@ -26,4 +26,18 @@ export class StudentsComponent implements OnInit {
     this.router.navigateByUrl('/' + student.username);
   }
 
+  getStudentColorClass(student: Student) {
+    const classes = {
+      c1: student.fav_color === 1,
+      c2: student.fav_color === 2,
+      c3: student.fav_color === 3,
+      c4: student.fav_color === 4,
+      c5: student.fav_color === 5,
+      c6: student.fav_color === 6,
+      c7: student.fav_color === 7,
+      c8: student.fav_color === 8
+    };
+    return classes;
+  }
+
 }
