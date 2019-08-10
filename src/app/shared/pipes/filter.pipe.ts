@@ -20,7 +20,7 @@ export class FilterPipe implements PipeTransform {
     searchText = searchText.toLocaleLowerCase();
     return items.filter(it => {
       const fullname = it.fname + ' ' + it.lname;
-      return fullname.toLocaleLowerCase().includes(searchText);
+      return fullname.toLocaleLowerCase().includes(searchText) || it.username.toLocaleLowerCase().includes(searchText);
     });
   }
 
