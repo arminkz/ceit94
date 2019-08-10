@@ -37,6 +37,12 @@
   margin-top: 50vh;
 }
 
+@media screen and (max-width: 576px) {
+  .lp-logo{
+    margin-top: 35vh;
+  }
+}
+
 .lp-logo-wrap{
   display: block;
   position: relative;

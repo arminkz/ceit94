@@ -1,5 +1,10 @@
 @import "../styles/_colors.scss";
 
+.navbar-nav {
+  margin: 0;
+  padding: 7.5px 15px;
+}
+
 .navbar-dark{
   background-color: #242424;
 }
@@ -10,7 +15,6 @@
 }
 
 .navbar-nav {
-
   font-family: IRANSans;
   color: #e2e2e2;
 
@@ -23,7 +27,6 @@
   p{
     margin-bottom: 0;
   }
-
 }
 
 .sidebar{
