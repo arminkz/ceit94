@@ -22,4 +22,5 @@ stg-deploy:
   only:
     - staging
   script:
-    - docker info
+    - rm -rf /var/www/stg-root/*
+    - cp -r dist/ceit94/* /var/www/stg-root/
