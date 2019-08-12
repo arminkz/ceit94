@@ -1,0 +1,37 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  variables:
+    GIT_STRATEGY: clone
+  tags:
+    - build
+  only:
+    - staging
+    - master
+  script:
+    - docker build . -t website-builder:$CI_PIPELINE_ID
+    - docker run --rm -v $PWD/dist:/app/dist:rw website-builder:$CI_PIPELINE_ID
+    - docker rmi website-builder:$CI_PIPELINE_ID
+
+stg-deploy:
+  stage: deploy
+  tags:
+    - deploy
+  only:
+    - staging
+  script:
+    - rm -rf /var/www/stg-root/*
+    - cp -r dist/ceit94/* /var/www/stg-root/
+
+prod-deploy:
+  stage: deploy
+  tags:
+    - deploy
+  only:
+    - master
+  script:
+    - rm -rf /var/www/prod-root/*
+    - cp -r dist/ceit94/* /var/www/prod-root/
