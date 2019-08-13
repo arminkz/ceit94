@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { FilterPipe } from './shared/pipes/filter.pipe';
+import {AuthService} from './auth.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

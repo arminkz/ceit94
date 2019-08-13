@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Student} from '../shared/models/student.model';
 import {StudentService} from '../student.service';
 import {Router} from '@angular/router';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-students',
@@ -10,12 +11,15 @@ import {Router} from '@angular/router';
 })
 export class StudentsComponent implements OnInit {
 
+  menu_activated = false;
+
   students: Student[];
   searchText: string;
 
   constructor(
     private studentService: StudentService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
     ) { }
 
   ngOnInit() {
@@ -40,4 +44,8 @@ export class StudentsComponent implements OnInit {
     return classes;
   }
 
+  gotoLogin() {
+    this.auth.redirectUrl = this.router.url;
+    this.router.navigateByUrl('/login');
+  }
 }

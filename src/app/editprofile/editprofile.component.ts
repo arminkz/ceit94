@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./editprofile.component.scss']
 })
 export class EditprofileComponent implements OnInit {
+  menu_activated = false;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {StudentService} from '../student.service';
 import {Student} from '../shared/models/student.model';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,11 +10,16 @@ import {Student} from '../shared/models/student.model';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+
+  menu_activated = false;
+
   student: Student;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private auth: AuthService
   ) { }
 
   ngOnInit() {
@@ -35,6 +41,11 @@ export class ProfileComponent implements OnInit {
     };
 
     return classes;
+  }
+
+  gotoLogin() {
+    this.auth.redirectUrl = this.router.url;
+    this.router.navigateByUrl('/login');
   }
 
 }

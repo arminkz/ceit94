@@ -1,0 +1,121 @@
+.wrapper {
+  display: block;
+}
+
+#side-menu {
+  min-width: 250px;
+  max-width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  z-index: 9999;
+  transition: left 0.5s ease-in-out;
+  background-color: #161616;
+  text-align: center;
+  font-family: IRANSans;
+  color: #FEFEFE;
+}
+
+#side-menu.active{
+  left:0;
+}
+
+.side-menu-pic{
+  width: 120px;
+  height: 120px;
+  margin-top: 30px;
+  border: solid 1.5px #c60139;
+  border-radius: 50%;
+}
+
+.side-menu-username{
+  font-size: 13.5px;
+  margin: 10px 0 0 0;
+
+  a{
+    color: #FEFEFE;
+    text-decoration: underline;
+  }
+}
+
+.side-menu-welcome{
+  font-size: 13.5px;
+  margin: 3px 0 0 0;
+}
+
+.menu-items{
+  padding-top: 90px;
+
+  li{
+    padding: 12px;
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    border-color: #FEFEFE;
+    margin: 0 17px;
+
+    a{
+      text-decoration: none;
+      color: #FEFEFE;
+    }
+
+    p{
+      margin-bottom: 0;
+    }
+
+    svg{
+      fill: #FEFEFE;
+      width: 15.4px;
+      height: 12.2px;
+    }
+  }
+
+  li.last{
+    border-width: 1px 0 1px 0;
+  }
+
+  li.logout-button{
+    position: absolute;
+    display: block;
+    bottom: 0;
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    background-color: #c60139;
+    margin:0;
+  }
+}
+
+
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 998;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  -webkit-backdrop-filter: blur(4.5px);
+  backdrop-filter: blur(4.5px);
+  box-shadow: 0 0 11px 0 rgba(0, 0, 0, 0.16);
+  background-color: #262626;
+}
+
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+#dismiss {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #FFF;
+
+  a{
+    color: #FFF;
+    text-decoration: none;
+  }
+}
