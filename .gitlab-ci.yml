@@ -1,8 +1,7 @@
 stages:
   - build
-  - deploy
 
-build:
+stg-build:
   stage: build
   variables:
     GIT_STRATEGY: fetch
@@ -10,28 +9,24 @@ build:
     - build
   only:
     - staging
-    - master
   script:
     - docker build . -t website-builder:$CI_PIPELINE_ID
     - docker run --rm -v $PWD/dist:/app/dist website-builder:$CI_PIPELINE_ID
     - docker rmi website-builder:$CI_PIPELINE_ID
-
-stg-deploy:
-  stage: deploy
-  tags:
-    - deploy
-  only:
-    - staging
-  script:
     - rm -rf /var/www/stg-root/*
     - cp -r dist/ceit94/* /var/www/stg-root/
 
-prod-deploy:
-  stage: deploy
+prod-build:
+  stage: build
+  variables:
+    GIT_STRATEGY: fetch
   tags:
-    - deploy
+    - build
   only:
     - master
   script:
-    - rm -rf /var/www/prod-root/*
+    - docker build . -t website-builder:$CI_PIPELINE_ID
+    - docker run --rm -v $PWD/dist:/app/dist:rw website-builder:$CI_PIPELINE_ID
+    - docker rmi website-builder:$CI_PIPELINE_ID
+    - rm -rf /var/www/stg-root/*
     - cp -r dist/ceit94/* /var/www/prod-root/
