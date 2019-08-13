@@ -13,7 +13,7 @@ build:
     - master
   script:
     - docker build . -t website-builder:$CI_PIPELINE_ID
-    - docker run --rm -v $PWD/dist:/app/dist:rw website-builder:$CI_PIPELINE_ID
+    - docker run --rm -v $PWD/dist:/app/dist website-builder:$CI_PIPELINE_ID
     - docker rmi website-builder:$CI_PIPELINE_ID
 
 stg-deploy:
