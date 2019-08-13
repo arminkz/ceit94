@@ -5,7 +5,7 @@ stages:
 build:
   stage: build
   variables:
-    GIT_STRATEGY: clone
+    GIT_STRATEGY: fetch
   tags:
     - build
   only:
