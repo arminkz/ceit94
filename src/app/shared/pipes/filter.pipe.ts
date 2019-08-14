@@ -8,15 +8,12 @@ import {last} from 'rxjs/operators';
 export class FilterPipe implements PipeTransform {
 
   transform(items: Student[], searchText: string): any {
-
     if (!items) {
       return [];
     }
-
     if (!searchText) {
       return items;
     }
-
     searchText = searchText.toLocaleLowerCase();
     return items.filter(it => {
       const fullname = it.fname + ' ' + it.lname;
