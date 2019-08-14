@@ -7,7 +7,7 @@ import {AuthService} from '../auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  login_subpage = 1;
+  login_subpage = 0;
 
   constructor(private auth: AuthService) { }
 
@@ -18,4 +18,7 @@ export class LoginComponent implements OnInit {
     this.auth.login();
   }
 
+  register() {
+
+  }
 }

@@ -1,0 +1,37 @@
+.navbar-nav {
+  margin: 0;
+  padding: 7.5px 15px;
+}
+
+.navbar-dark{
+  background-color: #242424;
+}
+
+.navbar-logo {
+  width: 72px;
+  height: 72px;
+}
+
+.navbar-nav {
+  font-family: IRANSans;
+  color: #e2e2e2;
+
+  .navbar-center{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  p{
+    margin-bottom: 0;
+  }
+}
+
+.navbar-toggle-button{
+  background: transparent;
+  border: none;
+}
+
+.navbar.fixed-top{
+  z-index: 900;
+}

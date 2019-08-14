@@ -1,34 +1,6 @@
 @import "../styles/_colors.scss";
 @import "../styles/_sidebar.scss";
-
-.navbar-nav {
-  margin: 0;
-  padding: 7.5px 15px;
-}
-
-.navbar-dark{
-  background-color: #242424;
-}
-
-.navbar-logo {
-  width: 72px;
-  height: 72px;
-}
-
-.navbar-nav {
-  font-family: IRANSans;
-  color: #e2e2e2;
-
-  .navbar-center{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  p{
-    margin-bottom: 0;
-  }
-}
+@import "../styles/_navbar.scss";
 
 .sidebar{
   position: fixed;
@@ -576,7 +548,6 @@ $section-space : 20px;
 }
 
 .comment-text{
-
   background-color: #1d1d1d;
   min-height: 80px;
   border-radius: 17.5px;
@@ -589,12 +560,4 @@ $section-space : 20px;
     direction: rtl;
     text-align: right;
   }
-}
-
-.border-red{
-  border: solid 1px #F00;
-}
-
-.border-green{
-  border: solid 1px #0F0;
 }
