@@ -19,7 +19,7 @@ export class StudentsComponent implements OnInit {
   constructor(
     private studentService: StudentService,
     private router: Router,
-    private auth: AuthService
+    public auth: AuthService
     ) { }
 
   ngOnInit() {

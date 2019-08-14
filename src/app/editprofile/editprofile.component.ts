@@ -13,7 +13,7 @@ export class EditprofileComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private auth: AuthService
+    public auth: AuthService
   ) {}
 
   ngOnInit() {
