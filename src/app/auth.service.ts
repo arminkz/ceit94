@@ -11,7 +11,7 @@ export class AuthService {
   redirectUrl = '';
   me: Student = null;
 
-  apiUrl = 'http://api.staging.94.ceit.aut.ac.ir';
+  apiUrl = 'https://api.staging.94.ceit.aut.ac.ir';
 
   windowHandle: any;
   intervalHandle: any;
