@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import {Student} from './shared/models/student.model';
 import {Router} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isAuthenticated = false;
   redirectUrl = '';
   me: Student = null;
 
@@ -17,7 +17,7 @@ export class AuthService {
   intervalHandle: any;
   authorizationCode: string;
   intervalLen = 100;
-  intervalCount = 100000;
+  intervalCount = 20000;
 
   constructor(
     private router: Router,
@@ -25,21 +25,26 @@ export class AuthService {
   ) { }
 
   login() {
-    this.isAuthenticated = true;
+    /*this.isAuthenticated = true;
     this.me = {username: 'arminkz', fname: 'آرمین', lname: 'کاظمی', profile_pic: '../../assets/armin2.jpg', fav_color: 1};
     if (this.redirectUrl !== '') {
       this.router.navigateByUrl(this.redirectUrl);
     } else {
       this.router.navigateByUrl('/');
-    }
+    }*/
   }
 
   logout() {
-    this.isAuthenticated = false;
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
   }
 
-  isLoggedIn(): boolean {
-    return this.isAuthenticated;
+  public isLoggedIn() {
+    return moment().isBefore(this.getExpiration());
+  }
+
+  public isLoggedOut() {
+    return !this.isLoggedIn();
   }
 
   getMe(): Student {
@@ -61,7 +66,7 @@ export class AuthService {
         try {
           href = this.windowHandle.location.href; // set window location to href string
         } catch (e) {
-          // console.log('Error:', e); // Handle any errors here
+          // console.log('Error:', e); // CORS Errors will catch here
         }
         if (href != null) {
           // Method for getting query parameters from query string
@@ -75,7 +80,7 @@ export class AuthService {
           if (href.match('code')) {
             window.clearInterval(this.intervalHandle);
             this.authorizationCode = getQueryString('code', href);
-            console.log('auth code received : ' + this.authorizationCode);
+            // console.log('auth code received : ' + this.authorizationCode);
             this.windowHandle.close();
             /* do rest of login process*/
           }
@@ -84,7 +89,7 @@ export class AuthService {
     }, this.intervalLen);
   }
 
-  createOAuthWindow(url: string, name = 'Authorization', width = 400, height = 500, left = 0, top = 0) {
+  createOAuthWindow(url: string, name = 'Authorization', width = 400, height = 400, left = 0, top = 0) {
     if (url == null) {
       return null;
     }
@@ -93,14 +98,23 @@ export class AuthService {
   }
 
   autOAuth() {
-    console.log('connecting to aut ...')
     this.http.get(this.apiUrl + '/oauth/aut').subscribe(resp => {
-      console.log(resp);
       this.doAuthorization('https://account.aut.ac.ir/api/oauth/authorize?client_id=' + resp['client_id'] +
         '&redirect_uri=' + resp['redirect_uri']);
-    });    /*this.createOAuthWindow('https://account.aut.ac.ir/api/oauth/authorize?client_id='+ client_id
-    + ');*/
+    });
   }
 
+  private setSession(authResult) {
+    const expiresAt = moment().add(authResult.expiresIn, 'second');
+
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+  }
+
+  getExpiration() {
+    const expiration = localStorage.getItem('expires_at');
+    const expiresAt = JSON.parse(expiration);
+    return moment(expiresAt);
+  }
 
 }
