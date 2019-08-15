@@ -19,6 +19,6 @@ export class LoginComponent implements OnInit {
   }
 
   register() {
-
+    this.auth.autOAuth();
   }
 }
