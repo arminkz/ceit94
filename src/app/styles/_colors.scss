@@ -1,0 +1,144 @@
+$color1: #9a0a33;
+$color1d: #6C0824;
+$color2: #e83c6d;
+$color2d: #AD2B47;
+$color3: #3ce8cb;
+$color3d: #2DAD97;
+$color4: #e83cd2;
+$color4d: #AD2C9D;
+$color5: #d3cf55;
+$color5d: #7b782d;
+$color6: #5a55d3;
+$color6d: #443F9D;
+$color7: #5ed355;
+$color7d: #2e622b;
+$color8: #d65822;
+$color8d: #9F4119;
+
+
+
+@mixin color-setter($baseclass,$property){
+  .c1#{$baseclass}{
+    #{$property}: $color1;
+  }
+  .c2#{$baseclass}{
+    #{$property}: $color2;
+  }
+  .c3#{$baseclass}{
+    #{$property}: $color3;
+  }
+  .c4#{$baseclass}{
+    #{$property}: $color4;
+  }
+  .c5#{$baseclass}{
+    #{$property}: $color5;
+  }
+  .c6#{$baseclass}{
+    #{$property}: $color6;
+  }
+  .c7#{$baseclass}{
+    #{$property}: $color7;
+  }
+  .c8#{$baseclass}{
+    #{$property}: $color8;
+  }
+}
+
+@mixin color-setter-b($baseclass,$property){
+  #{$baseclass}.c1{
+    #{$property}: $color1;
+  }
+  #{$baseclass}.c2{
+    #{$property}: $color2;
+  }
+  #{$baseclass}.c3{
+    #{$property}: $color3;
+  }
+  #{$baseclass}.c4{
+    #{$property}: $color4;
+  }
+  #{$baseclass}.c5{
+    #{$property}: $color5;
+  }
+  #{$baseclass}.c6{
+    #{$property}: $color6;
+  }
+  #{$baseclass}.c7{
+    #{$property}: $color7;
+  }
+  #{$baseclass}.c8{
+    #{$property}: $color8;
+  }
+}
+
+@mixin color-setter-dark($baseclass,$property){
+  .c1#{$baseclass}{
+    #{$property}: $color1d;
+  }
+  .c2#{$baseclass}{
+    #{$property}: $color2d;
+  }
+  .c3#{$baseclass}{
+    #{$property}: $color3d;
+  }
+  .c4#{$baseclass}{
+    #{$property}: $color4d;
+  }
+  .c5#{$baseclass}{
+    #{$property}: $color5d;
+  }
+  .c6#{$baseclass}{
+    #{$property}: $color6d;
+  }
+  .c7#{$baseclass}{
+    #{$property}: $color7d;
+  }
+  .c8#{$baseclass}{
+    #{$property}: $color8d;
+  }
+}
+
+@mixin color-setter-child($class,$property) {
+  .c1 {
+    #{$class}{
+      #{$property}: $color1;
+    }
+  }
+  .c2 {
+    #{$class}{
+      #{$property}: $color2;
+    }
+  }
+  .c3 {
+    #{$class}{
+      #{$property}: $color3;
+    }
+  }
+  .c4 {
+    #{$class}{
+      #{$property}: $color4;
+    }
+  }
+  .c5 {
+    #{$class}{
+      #{$property}: $color5;
+    }
+  }
+  .c6 {
+    #{$class}{
+      #{$property}: $color6;
+    }
+  }
+  .c7 {
+    #{$class}{
+      #{$property}: $color7;
+    }
+  }
+  .c8 {
+    #{$class}{
+      #{$property}: $color8;
+    }
+  }
+}
+
+

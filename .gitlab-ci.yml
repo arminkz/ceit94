@@ -10,9 +10,8 @@ stg-build:
   only:
     - staging
   script:
-    - docker build . -t website-builder:$CI_PIPELINE_ID
-    - docker run --rm -v $PWD/dist:/app/dist:rw website-builder:$CI_PIPELINE_ID
-    - docker rmi website-builder:$CI_PIPELINE_ID
+    - npm install
+    - ng build --prod
     - rm -rf /var/www/stg-root/*
     - cp -r dist/ceit94/* /var/www/stg-root/
 
@@ -25,8 +24,7 @@ prod-build:
   only:
     - master
   script:
-    - docker build . -t website-builder:$CI_PIPELINE_ID
-    - docker run --rm -v $PWD/dist:/app/dist:rw website-builder:$CI_PIPELINE_ID
-    - docker rmi website-builder:$CI_PIPELINE_ID
-    - rm -rf /var/www/stg-root/*
+    - npm install
+    - ng build --prod
+    - rm -rf /var/www/prod-root/*
     - cp -r dist/ceit94/* /var/www/prod-root/

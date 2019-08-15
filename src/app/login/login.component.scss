@@ -109,6 +109,22 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .login-box {
+    margin-top: 30px;
+  }
+}
+
+.register-button{
+  margin-top: 15px;
+
+  a{
+    font-family: IRANSans;
+    font-size: 13px;
+    color: #d9d3d3;
+  }
+}
+
 button {
   width: 100%;
   font-family: IRANSans;
@@ -119,6 +135,7 @@ button {
   background-color: transparent;
   border: solid 1px #c60139;
   outline: none;
+  margin-bottom: 15px;
 }
 
 button:hover {
@@ -132,6 +149,19 @@ button.button-login {
     width: 7.8px;
     height: 13.7px;
   }
+}
+
+button.aut-button {
+  background-color: #c60139;
+
+  img{
+    width: 28px;
+    height: 28px;
+  }
+}
+
+button.bigger{
+  padding: 20px 9px;
 }
 
 .button-google{
