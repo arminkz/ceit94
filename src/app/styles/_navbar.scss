@@ -30,6 +30,16 @@
 .navbar-toggle-button{
   background: transparent;
   border: none;
+
+  svg {
+    fill: #cecece;
+  }
+}
+
+.navbar-toggle-button:hover{
+  svg {
+    fill: #FFF;
+  }
 }
 
 .navbar.fixed-top{
