@@ -10,33 +10,47 @@ import * as moment from 'moment';
 export class AuthService {
   redirectUrl = '';
   me: Student = null;
+  profileCompleted: boolean;
 
   apiUrl = 'https://api.staging.94.ceit.aut.ac.ir';
 
   windowHandle: any;
   intervalHandle: any;
-  authorizationCode: string;
   intervalLen = 100;
-  intervalCount = 20000;
+  intervalCount = 2000;
 
   constructor(
     private router: Router,
     private http: HttpClient
   ) { }
 
-  login() {
-    /*this.isAuthenticated = true;
-    this.me = {username: 'arminkz', fname: 'آرمین', lname: 'کاظمی', profile_pic: '../../assets/armin2.jpg', fav_color: 1};
-    if (this.redirectUrl !== '') {
-      this.router.navigateByUrl(this.redirectUrl);
-    } else {
-      this.router.navigateByUrl('/');
-    }*/
+  login(authCode: string) {
+    this.http.post(this.apiUrl + '/oauth/aut/login', {code: authCode}).subscribe(resp => {
+      console.log(resp);
+      localStorage.setItem('token', resp['token']);
+      localStorage.setItem('token_expire', String(moment().add(24, 'hours').unix()));
+      console.log('isLoggedIn() :' + this.isLoggedIn());
+      this.me = resp['user'];
+      localStorage.setItem('user' , JSON.stringify(resp['user']));
+      this.profileCompleted = resp['profileCompeleted'];
+      if (this.profileCompleted) {
+        // redirect back
+        if (this.redirectUrl === '') {
+          this.router.navigateByUrl('/');
+        } else {
+          this.router.navigateByUrl(this.redirectUrl);
+        }
+      } else {
+        // go to edit profile
+        this.router.navigateByUrl('/edit');
+      }
+    });
   }
 
   logout() {
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
+    localStorage.removeItem('token');
+    localStorage.removeItem('token_expire');
+    localStorage.removeItem('user');
   }
 
   public isLoggedIn() {
@@ -61,6 +75,7 @@ export class AuthService {
         window.clearInterval(this.intervalHandle);
         this.windowHandle.close();
       } else {
+        console.log('waiting...');
         let href: string;
         // For referencing window url
         try {
@@ -76,13 +91,13 @@ export class AuthService {
             const string = reg.exec(windowLocationUrl);
             return string ? string[1] : null;
           };
-          /* As i was getting code and oauth-token i added for same, you can replace with your expected variables */
           if (href.match('code')) {
             window.clearInterval(this.intervalHandle);
-            this.authorizationCode = getQueryString('code', href);
-            // console.log('auth code received : ' + this.authorizationCode);
+            const authCode = getQueryString('code', href);
+            console.log('auth code received : ' + authCode);
             this.windowHandle.close();
             /* do rest of login process*/
+            this.login(authCode);
           }
         }
       }
@@ -112,9 +127,9 @@ export class AuthService {
   }
 
   getExpiration() {
-    const expiration = localStorage.getItem('expires_at');
+    const expiration = localStorage.getItem('token_expire');
     const expiresAt = JSON.parse(expiration);
-    return moment(expiresAt);
+    return moment.unix(expiresAt);
   }
 
 }

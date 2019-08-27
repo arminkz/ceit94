@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
+import {Student} from '../shared/models/student.model';
 
 @Component({
   selector: 'app-editprofile',
@@ -10,6 +11,9 @@ import {Router} from '@angular/router';
 export class EditprofileComponent implements OnInit {
 
   menu_activated = false;
+  edit_subpage = 0;
+
+  newStudent: Student;
 
   constructor(
     private router: Router,
@@ -17,6 +21,13 @@ export class EditprofileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    if (this.auth.profileCompleted) {
+      // todo
+    } else {
+      console.log('user data : ');
+      console.log(this.auth.me);
+      this.newStudent = this.auth.me;
+    }
   }
 
   gotoLogin() {

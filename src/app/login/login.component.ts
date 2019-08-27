@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   register() {
+    this.login_subpage = 3;
     this.auth.autOAuth();
   }
 }
