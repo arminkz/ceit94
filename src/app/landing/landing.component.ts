@@ -1,4 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-landing',
@@ -6,6 +7,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit, OnDestroy {
+
+  menu_activated = false;
 
   interval: any;
   now: Date;
@@ -15,7 +18,9 @@ export class LandingComponent implements OnInit, OnDestroy {
   grad_min = 0;
   grad_sec = 0;
 
-  constructor() { }
+  constructor(
+    public auth: AuthService
+  ) { }
 
   ngOnInit() {
     this.interval = setInterval(() => {
