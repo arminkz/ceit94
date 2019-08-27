@@ -72,7 +72,7 @@
   <img *ngIf="auth.isLoggedIn() && auth.getMe().profile_pic" class="side-menu-pic" [src]="auth.getMe().profile_pic" alt=""/>
 
   <p class="side-menu-username">
-    <a *ngIf="!auth.isLoggedIn()" (click)="gotoLogin()" >ورود به حساب کاربری</a>
+    <a *ngIf="!auth.isLoggedIn()" routerLink="/login" >ورود به حساب کاربری</a>
     <a *ngIf="auth.isLoggedIn()" routerLink="/{{auth.getMe().username}}">{{auth.getMe().username}}</a>
   </p>
 
