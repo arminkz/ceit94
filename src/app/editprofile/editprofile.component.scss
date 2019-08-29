@@ -1,2 +1,289 @@
 @import "../styles/_sidebar.scss";
 @import "../styles/_navbar.scss";
+@import "../styles/_colors.scss";
+
+.main{
+  background-color: #141414;
+}
+
+.login-box {
+  border-radius: 10.5px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #242424;
+  margin-top: 70px;
+
+  .spacer {
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #c60139;
+  }
+
+  .top-row {
+    font-family: IRANSans;
+    margin-top: 27px;
+    margin-bottom: 25px;
+    font-size: 16.5px;
+    color: #a6a6a6;
+    text-align: center;
+  }
+
+}
+
+.back-btn{
+  width: 7.8px;
+  height: 13.7px;
+  object-fit: contain;
+  fill: #a6a6a6;
+}
+
+.back-btn:hover{
+  fill: #a5002f;
+}
+
+.form-input {
+  text-align: center;
+  background-color: #1c1c1c;
+  color: #FFF;
+  border: none;
+  font-size: 15px;
+  font-family: IRANSans;
+  padding: 0 0 0 15px;
+  margin-bottom: 15px;
+}
+
+.form-input:focus {
+  border: solid 2.5px #a5002f;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.form-label {
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 11.5px;
+  font-family: IRANSans;
+  color: #FFF;
+  direction: rtl;
+  text-align: right;
+}
+
+.form-label-detail {
+  margin-top: 8px;
+  font-size: 9px;
+  font-family: IRANSans;
+  color: #848484;
+  direction: rtl;
+  text-align: right;
+}
+
+.profile-pic-placeholder {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: solid 1.5px #9a0a33;
+  margin-top: 20px;
+  background-color: #1c1c1c;
+
+  p {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: IRANSans;
+    color: #FFF;
+    text-align: center;
+    font-size: 11.5px;
+  }
+
+  svg {
+    display: block;
+    fill: #FFF;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+.profile-pic-placeholder:hover {
+  border: solid 1.5px #FFF;
+}
+
+.color-picker {
+  display: inline-block;
+  padding: 5px;
+  border-style: solid;
+  border-width: 0;
+  border-radius: 50%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.color-picker.active {
+  border-width: 2px;
+}
+
+@include color-setter('.color-picker',border-color);
+
+.inner {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+@include color-setter-child('.inner',background-color);
+
+.inner::after {
+  content: '';
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 50%;
+  margin-left: 50%;
+  background-color: #000;
+  opacity: 0.2;
+}
+
+.form-input-box {
+  border-radius: 3.5px;
+  background-color: #1c1c1c;
+  border: solid 2.5px transparent;
+  margin-top: 13px;
+
+  input {
+    text-align: center;
+    background-color: transparent;
+    color: #FFF;
+    border: none;
+    font-size: 15px;
+    font-family: IRANSans;
+    padding: 0 0 0 15px;
+  }
+
+  input:focus {
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  textarea {
+    text-align: right;
+    direction: rtl;
+    background-color: transparent;
+    color: #FFF;
+    border: none;
+    font-size: 15px;
+    font-family: IRANSans;
+    padding: 0 0 0 15px;
+    margin: 5px 25px 5px 0;
+    min-height: 100px;
+  }
+
+  textarea:focus {
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    outline: none;
+    -webkit-appearance: none;
+  }
+}
+
+.form-input-icon {
+  width: 18.5px;
+  height: 18.5px;
+  margin: 10px;
+  fill: #595959;
+  fill-rule: evenodd;
+}
+
+.form-input-box:focus-within {
+  //box-shadow: 0 0 5px #a5002f;
+  border: solid 2.5px #a5002f;
+
+  input {
+    color: #FFF;
+  }
+
+  .form-input-icon {
+    fill: #a5002f;
+  }
+}
+
+.pagination{
+  margin-top: 35px;
+  text-align: center;
+}
+
+.page-circle {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: solid 2.5px #c60139;
+  border-radius: 50%;
+  margin-right: 55px;
+}
+
+.page-circle.active {
+  background-color: #c60139;
+}
+
+.page-circle::after {
+  content: ' ';
+  display: inline-block;
+  width: 40px;
+  height: 3px;
+  background-color: #c60139;
+  transform: translateX(25px) translateY(-8.5px);
+}
+
+.page-circle:last-child{
+  margin-right: 0;
+}
+
+.page-circle:last-child::after{
+  display: none;
+}
+
+.button-row {
+  margin-top: 35px;
+}
+
+button.button-next {
+  background-color: #c60139;
+  width: 100%;
+  font-family: IRANSans;
+  font-size: 15px;
+  padding: 9px;
+  border-radius: 45px;
+  color: #FFF;
+  border: solid 1px #c60139;
+  outline: none;
+  margin-bottom: 15px;
+
+  img{
+    width: 7.8px;
+    height: 13.7px;
+  }
+}
+
+.col-center{
+  float: none;
+  margin:auto;
+  padding: 0;
+}
+
+.border-green {
+  border: solid 1px #0F0;
+}
+
+.border-red {
+  border: solid 1px #F00;
+}

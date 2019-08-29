@@ -12,6 +12,8 @@
 
 */
 
+@import "../styles/_sidebar.scss";
+
 .border-red{
   border: solid 1px #F00;
 }
@@ -154,6 +156,19 @@
   background-color: #c70039;
   color: #FFF;
   border: 1px solid #FFF;
+}
+
+.toggle-button{
+  position: fixed;
+  top: 30px;
+  left: 16px;
+
+  background: transparent;
+  border: none;
+
+  svg {
+    fill: #cecece;
+  }
 }
 
 .shadow{
