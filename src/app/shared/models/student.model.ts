@@ -2,7 +2,9 @@ import {Music} from './music.model';
 
 export class Student {
   username: string;
+  email?: string;
   profile_pic?: string;
+  std_number?: number;
   fname: string;
   lname: string;
   fav_color: number

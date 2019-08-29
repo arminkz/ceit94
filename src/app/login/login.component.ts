@@ -15,10 +15,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.auth.login();
+   // this.auth.login();
   }
 
   register() {
-
+    this.login_subpage = 3;
+    this.auth.autOAuth();
   }
 }
