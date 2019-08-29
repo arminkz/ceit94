@@ -65,9 +65,19 @@ export class AuthService {
     return this.me;
   }
 
+  doAuthorizationRedirect(authUrl: string) {
+    window.location.href = authUrl; // one does not simply use jquery redirects :)
+  }
+
   doAuthorization(authUrl: string) {
     /* Create the window object by passing url and optional window title */
     this.windowHandle = this.createOAuthWindow(authUrl, 'AUT OAuth');
+    if (!this.windowHandle || this.windowHandle.closed || typeof this.windowHandle.closed === 'undefined') {
+      // POPUP BLOCKED
+      console.log('popup blocked !');
+      this.doAuthorizationRedirect(authUrl);
+      return;
+    }
     let loopCount = this.intervalCount;
     /* Now start the timer for which the window will stay, and after time over window will be closed */
     this.intervalHandle = window.setInterval(() => {
