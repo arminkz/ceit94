@@ -68,8 +68,8 @@
     </a>
   </div>
 
-  <img *ngIf="!auth.isLoggedIn() || !auth.getMe().profile_pic" class="side-menu-pic" src="../../assets/profile.jpg" alt=""/>
-  <img *ngIf="auth.isLoggedIn() && auth.getMe().profile_pic" class="side-menu-pic" [src]="auth.getMe().profile_pic" alt=""/>
+  <img *ngIf="!auth.isLoggedIn() || !auth.getMe() || !auth.getMe().profile_pic" class="side-menu-pic" src="../../assets/profile.jpg" alt=""/>
+  <img *ngIf="auth.isLoggedIn() && auth.getMe() && auth.getMe().profile_pic" class="side-menu-pic" [src]="auth.getMe().profile_pic" alt=""/>
 
   <p class="side-menu-username">
     <a *ngIf="!auth.isLoggedIn()" routerLink="/login" >ورود به حساب کاربری</a>

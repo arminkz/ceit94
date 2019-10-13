@@ -36,9 +36,12 @@ export class LandingComponent implements OnInit, OnDestroy {
       this.grad_sec = Math.floor(this.grad_rem / 1000) - this.grad_hour * 3600 - this.grad_min * 60;
     }, 1000);
 
-    // Handle OAuth
-    if (this.route.snapshot.queryParams['code'] != null) {
-      this.auth.login(this.route.snapshot.queryParams['code']);
+    if (!(window.opener && window.opener !== window)) {
+      // you are not in a popup
+      // Handle OAuth
+      if (this.route.snapshot.queryParams['code'] != null) {
+        this.auth.login(this.route.snapshot.queryParams['code']);
+      }
     }
   }
 
