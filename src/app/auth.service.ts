@@ -3,6 +3,7 @@ import {Student} from './shared/models/student.model';
 import {Router} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as moment from 'moment';
+import {environment} from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,10 @@ export class AuthService {
   me: Student = null;
   profileCompleted: boolean;
 
-  apiUrl = 'https://api.staging.94.ceit.aut.ac.ir';
-
   windowHandle: any;
   intervalHandle: any;
-  intervalLen = 100;
-  intervalCount = 2000;
+  intervalLen = 10;
+  intervalCount = 100000;
 
   constructor(
     private router: Router,
@@ -25,7 +24,7 @@ export class AuthService {
   ) { }
 
   login(authCode: string) {
-    this.http.post(this.apiUrl + '/oauth/aut/login', {code: authCode}).subscribe(resp => {
+    this.http.post(environment.apiUrl + '/oauth/aut/login', {code: authCode}).subscribe(resp => {
       console.log(resp);
       localStorage.setItem('token', resp['token']);
       localStorage.setItem('token_expire', String(moment().add(24, 'hours').unix()));
@@ -74,7 +73,7 @@ export class AuthService {
     this.windowHandle = this.createOAuthWindow(authUrl, 'AUT OAuth');
     if (!this.windowHandle || this.windowHandle.closed || typeof this.windowHandle.closed === 'undefined') {
       // POPUP BLOCKED
-      console.log('popup blocked !');
+      // console.log('popup blocked !');
       this.doAuthorizationRedirect(authUrl);
       return;
     }
@@ -123,17 +122,10 @@ export class AuthService {
   }
 
   autOAuth() {
-    this.http.get(this.apiUrl + '/oauth/aut').subscribe(resp => {
+    this.http.get(environment.apiUrl + '/oauth/aut').subscribe(resp => {
       this.doAuthorization('https://account.aut.ac.ir/api/oauth/authorize?client_id=' + resp['client_id'] +
         '&redirect_uri=' + resp['redirect_uri']);
     });
-  }
-
-  private setSession(authResult) {
-    const expiresAt = moment().add(authResult.expiresIn, 'second');
-
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
 
   getExpiration() {

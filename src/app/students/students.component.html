@@ -117,7 +117,18 @@
       </a>
     </nav>
 
-    <div class="main">
+    <div *ngIf="!isLoaded" class="main">
+      <div class="container">
+        <div class="row">
+          <div class="spinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isLoaded" class="main">
       <div class="container">
         <div class="row">
           <div class="col-10 col-md-10 col-lg-8 offset-1 offset-md-1 offset-lg-2">
@@ -144,13 +155,13 @@
               <div *ngFor="let student of students | filter: searchText" (click)="clickedStudent(student)" class="col-3 col-md-2">
                 <div class="std-card" [ngClass]="getStudentColorClass(student)">
                   <img *ngIf="!student.profile_pic" src="../../assets/profile.jpg" alt=""/>
-                  <img *ngIf="student.profile_pic" [src]="student.profile_pic" alt=""/>
+                  <img *ngIf="student.profile_pic" [src]="getStudentProfilePic(student)" alt=""/>
                   <div class="spacer" [ngClass]="getStudentColorClass(student)">
                     <div class="spacer-wrap">
                       <div class="spacer-inner"></div>
                     </div>
                   </div>
-                  <p>{{student.fname}} {{student.lname}}</p>
+                  <p>{{student.firstname}} {{student.lastname}}</p>
                 </div>
               </div>
 

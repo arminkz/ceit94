@@ -4,10 +4,10 @@ export class Student {
   username: string;
   email?: string;
   profile_pic?: string;
-  std_number?: number;
-  fname: string;
-  lname: string;
-  fav_color: number
+  std_number: string;
+  firstname: string;
+  lastname: string;
+  fav_color: number;
   bio?: string;
   myquote?: string;
   faculty?: string;
