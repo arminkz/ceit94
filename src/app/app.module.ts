@@ -13,6 +13,7 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
 import { FilterPipe } from './shared/pipes/filter.pipe';
 import { AuthService } from './auth.service';
 import {AuthInterceptor} from './auth.interceptor';
+import { NotFoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {AuthInterceptor} from './auth.interceptor';
     LoginComponent,
     ProfileComponent,
     EditprofileComponent,
-    FilterPipe
+    FilterPipe,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
