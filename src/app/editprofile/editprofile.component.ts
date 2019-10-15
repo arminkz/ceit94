@@ -5,6 +5,7 @@ import {Student} from '../shared/models/student.model';
 import {Ng2ImgMaxService} from 'ng2-img-max';
 import {DomSanitizer} from '@angular/platform-browser';
 import {HttpClient} from '@angular/common/http';
+import {StudentService} from '../student.service';
 
 @Component({
   selector: 'app-editprofile',
@@ -27,15 +28,15 @@ export class EditprofileComponent implements OnInit {
     private router: Router,
     public auth: AuthService,
     private ng2ImgMax: Ng2ImgMaxService,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    private studentService: StudentService
   ) {}
 
   ngOnInit() {
-    this.student = new Student();
-    this.student.fav_color = 1;
-
-
-
+    this.studentService.getMe().subscribe(
+      (resp) => {
+        this.student = resp;
+      });
 
     if (this.auth.profileCompleted) {
       // todo

@@ -9,9 +9,6 @@ import {environment} from '../environments/environment';
 })
 export class StudentService {
 
-  // studentsBrief: Observable<Student[]>;
-  // students: Student[];
-
   constructor(private http: HttpClient) {}
 
   getMe(): Observable<Student> {
