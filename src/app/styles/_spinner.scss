@@ -5,6 +5,13 @@
   position: relative;
 }
 
+.spinner.spinner-red {
+  margin-top: 50px;
+  .cube1, .cube2 {
+    background-color: #c60139;
+  }
+}
+
 .cube1, .cube2 {
   background-color: #333;
   width: 15px;

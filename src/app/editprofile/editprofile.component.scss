@@ -1,6 +1,7 @@
 @import "../styles/_sidebar.scss";
 @import "../styles/_navbar.scss";
 @import "../styles/_colors.scss";
+@import "../styles/_spinner.scss";
 
 .main{
   background-color: #141414;
@@ -81,6 +82,17 @@
   text-align: right;
 }
 
+.form-notice {
+  height: 40px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 13.5px;
+  font-family: IRANSans;
+  color: #FFF;
+  direction: rtl;
+  text-align: center;
+}
+
 .profile-pic-placeholder {
   width: 90px;
   height: 90px;
@@ -88,6 +100,7 @@
   border: solid 1.5px #9a0a33;
   margin-top: 20px;
   background-color: #1c1c1c;
+  overflow: hidden;
 
   p {
     margin-top: 20px;
@@ -106,10 +119,19 @@
     text-align: center;
     margin: 0 auto;
   }
+
+  img {
+    width: 90px;
+    height: 90px;
+  }
 }
 
 .profile-pic-placeholder:hover {
   border: solid 1.5px #FFF;
+}
+
+#file-upload {
+  display: none;
 }
 
 .color-picker {
@@ -272,6 +294,10 @@ button.button-next {
     width: 7.8px;
     height: 13.7px;
   }
+}
+
+.submit-info {
+  margin-bottom: 20px;
 }
 
 .col-center{

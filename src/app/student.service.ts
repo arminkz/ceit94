@@ -9,10 +9,14 @@ import {environment} from '../environments/environment';
 })
 export class StudentService {
 
-  studentsBrief: Observable<Student[]>;
-  students: Student[];
+  // studentsBrief: Observable<Student[]>;
+  // students: Student[];
 
   constructor(private http: HttpClient) {}
+
+  getMe(): Observable<Student> {
+    return this.http.get<Student>(environment.apiUrl + '/common/me');
+  }
 
   getStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(environment.apiUrl + '/common/students');

@@ -9,7 +9,7 @@ export class Student {
   lastname: string;
   fav_color: number;
   bio?: string;
-  myquote?: string;
+  quote?: string;
   faculty?: string;
   fav_music?: Music;
   birthday?: number;
