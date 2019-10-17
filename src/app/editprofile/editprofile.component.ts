@@ -33,6 +33,7 @@ export class EditprofileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log('getting my info ...');
     this.studentService.getMe().subscribe(
       (resp) => {
         this.student = resp;

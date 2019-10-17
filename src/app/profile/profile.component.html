@@ -68,6 +68,23 @@
         </a>
       </li>
 
+      <li *ngIf="auth.isLoggedIn()">
+        <a routerLink="/vote">
+          <div class="row no-gutters">
+            <div class="col-10">
+              <p>رای گیری ترین ها</p>
+            </div>
+            <div class="col-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22.624" height="22.514" viewBox="0 0 22.624 22.514">
+                <g id="edit" transform="translate(-.001 -1.289)">
+                  <path d="M14.069 5.046l4.6 4.6L7.022 21.3l-4.6-4.6zm8.095-1.11l-2.053-2.052a2.037 2.037 0 0 0-2.877 0L15.268 3.85l4.6 4.6 2.293-2.293a1.569 1.569 0 0 0 .002-2.221zM.013 23.165a.524.524 0 0 0 .634.623l5.128-1.243-4.6-4.6z"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </li>
+
       <li class="last">
         <a href="#">
           <div class="row no-gutters">

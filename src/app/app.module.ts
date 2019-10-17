@@ -16,6 +16,7 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
 import { AuthService } from './auth.service';
 import { AuthInterceptor } from './auth.interceptor';
 import { VoteComponent } from './vote/vote.component';
+import { UserSearchComponent } from './usersearch/usersearch.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { VoteComponent } from './vote/vote.component';
     EditprofileComponent,
     FilterPipe,
     NotFoundComponent,
-    VoteComponent
+    VoteComponent,
+    UserSearchComponent
   ],
   imports: [
     BrowserModule,
