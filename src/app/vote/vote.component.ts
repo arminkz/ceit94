@@ -36,7 +36,7 @@ export class VoteComponent implements OnInit {
   }
 
   submitVote(s: Student) {
-    this.voteService.submitVote(this.selectedVote.id,s).subscribe(() => {
+    this.voteService.submitVote(this.selectedVote.id, s).subscribe(() => {
       // update UI
       this.selectedVote.voted_to = s;
     });
