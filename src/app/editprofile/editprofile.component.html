@@ -223,14 +223,14 @@
                 <div class="col-10 offset-1">
                   <div class="row">
                     <div class="col-8 col-md-4 order-3 order-md-1">
-                      <input class="form-input form-control" type="input" spellcheck="false" placeholder="نام خانوادگی">
+                      <input [(ngModel)]="student.lastname" class="form-input form-control" type="input" spellcheck="false" placeholder="نام خانوادگی">
                     </div>
                     <div class="col-4 col-md-2 order-4 order-md-2">
                       <p class="form-label">نام خانوادگی</p>
                     </div>
 
                     <div class="col-8 col-md-4 order-1 order-md-3">
-                      <input class="form-input form-control" type="input" spellcheck="false" placeholder="نام">
+                      <input [(ngModel)]="student.firstname" class="form-input form-control" type="input" spellcheck="false" placeholder="نام">
                     </div>
                     <div class="col-4 col-md-2 order-2 order-md-4">
                       <p class="form-label">نام</p>
@@ -238,16 +238,20 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-2">
-                      <input class="form-input form-control" type="input" spellcheck="false" placeholder="سال">
+                    <div class="col-8">
+                      <div class="row no-gutters">
+                        <div class="col-4 date-input">
+                          <input [(ngModel)]="jalali_year" (change)="parseBirthday()" class="form-input form-control" type="input" spellcheck="false" placeholder="سال">
+                        </div>
+                        <div class="col-3 date-input">
+                          <input [(ngModel)]="jalali_month" (change)="parseBirthday()" class="form-input form-control" type="input" spellcheck="false" placeholder="ماه">
+                        </div>
+                        <div class="col-3 date-input">
+                          <input [(ngModel)]="jalali_day" (change)="parseBirthday()" class="form-input form-control" type="input" spellcheck="false" placeholder="روز">
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-2">
-                      <input class="form-input form-control" type="input" spellcheck="false" placeholder="ماه">
-                    </div>
-                    <div class="col-2">
-                      <input class="form-input form-control" type="input" spellcheck="false" placeholder="روز">
-                    </div>
-                    <div class="col-3 offset-3">
+                    <div class="col-3 offset-1">
                       <p class="form-label">تاریخ تولد (شمسی)</p>
                     </div>
                   </div>
@@ -393,7 +397,7 @@
 
                   <div class="row no-gutters align-items-center form-input-box">
                     <div class="col">
-                      <input class="form-control form-control-lg" type="input" spellcheck="false" placeholder="لینک توییتر">
+                      <input [(ngModel)]="student.link_twitter" class="form-control form-control-lg" type="input" spellcheck="false" placeholder="لینک توییتر">
                     </div>
                     <div class="col-auto">
                       <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" width="41.17" height="33.696" viewBox="0 0 41.17 33.696">
@@ -404,7 +408,7 @@
 
                   <div class="row no-gutters align-items-center form-input-box">
                     <div class="col">
-                      <input class="form-control form-control-lg" type="input" spellcheck="false" placeholder="لینک اینستاگرام">
+                      <input [(ngModel)]="student.link_instagram" class="form-control form-control-lg" type="input" spellcheck="false" placeholder="لینک اینستاگرام">
                     </div>
                     <div class="col-auto">
                       <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.18 36.18">
@@ -425,7 +429,7 @@
 
                   <div class="row no-gutters align-items-center form-input-box">
                     <div class="col">
-                      <input class="form-control form-control-lg" type="input" spellcheck="false" placeholder="لینک لینکدین">
+                      <input [(ngModel)]="student.link_linkedin" class="form-control form-control-lg" type="input" spellcheck="false" placeholder="لینک لینکدین">
                     </div>
                     <div class="col-auto">
                       <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.18 36.18">
@@ -436,7 +440,7 @@
 
                   <div class="row no-gutters align-items-center form-input-box">
                     <div class="col">
-                      <input class="form-control form-control-lg" type="input" spellcheck="false" placeholder="لینک گیت هاب">
+                      <input [(ngModel)]="student.link_github" class="form-control form-control-lg" type="input" spellcheck="false" placeholder="لینک گیت هاب">
                     </div>
                     <div class="col-auto">
                       <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.807 40.807">
@@ -488,7 +492,7 @@
 
                   <div class="row no-gutters align-items-center form-input-box">
                     <div class="col">
-                      <textarea class="form-control form-control-lg" spellcheck="false" placeholder="درباره من"></textarea>
+                      <textarea [(ngModel)]="student.bio" class="form-control form-control-lg" spellcheck="false" placeholder="درباره من"></textarea>
                     </div>
                     <div class="col-auto">
                       <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.48 26.428">
@@ -500,7 +504,7 @@
 
                   <div class="row no-gutters align-items-center form-input-box">
                     <div class="col">
-                      <textarea class="form-control form-control-lg" spellcheck="false" placeholder="سخنی از من"></textarea>
+                      <textarea [(ngModel)]="student.quote" class="form-control form-control-lg" spellcheck="false" placeholder="سخنی از من"></textarea>
                     </div>
                     <div class="col-auto">
                       <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 32 24">

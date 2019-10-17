@@ -50,9 +50,9 @@ export class StudentsComponent implements OnInit {
     return classes;
   }
 
-  getStudentProfilePic(student: Student) {
+  /*getStudentProfilePic(student: Student) {
     return environment.staticUrl + '/' + student.profile_pic;
-  }
+  }*/
 
   gotoLogin() {
     this.auth.redirectUrl = this.router.url;

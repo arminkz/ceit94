@@ -6,6 +6,8 @@ import {Ng2ImgMaxService} from 'ng2-img-max';
 import {DomSanitizer} from '@angular/platform-browser';
 import {HttpClient} from '@angular/common/http';
 import {StudentService} from '../student.service';
+import * as moment from 'jalali-moment';
+import {ProfileService} from '../profile.service';
 
 @Component({
   selector: 'app-editprofile',
@@ -23,21 +25,36 @@ export class EditprofileComponent implements OnInit {
   profile_image_upload: File;
   profile_image_preview: any;
 
+  jalali_year: string;
+  jalali_month: string;
+  jalali_day: string;
+
   constructor(
     private http: HttpClient,
     private router: Router,
     public auth: AuthService,
     private ng2ImgMax: Ng2ImgMaxService,
     public sanitizer: DomSanitizer,
-    private studentService: StudentService
+    private profileService: ProfileService
   ) {}
 
   ngOnInit() {
     console.log('getting my info ...');
-    this.studentService.getMe().subscribe(
+    this.profileService.getProfile().subscribe((resp) => {
+      this.student = resp;
+      // init jalali birthday
+      const m: string = moment.unix(this.student.birthday).locale('fa').format('YYYY/MM/DD');
+      const date: string[] = m.split('/');
+      this.jalali_year = date[0];
+      this.jalali_month = date[1];
+      this.jalali_day = date[2];
+    });
+
+    // this.student = new Student();
+    /*this.studentService.getMe().subscribe(
       (resp) => {
         this.student = resp;
-      });
+      });*/
 
     if (this.auth.profileCompleted) {
       // todo
@@ -51,6 +68,12 @@ export class EditprofileComponent implements OnInit {
   gotoLogin() {
     this.auth.redirectUrl = this.router.url;
     this.router.navigateByUrl('/login');
+  }
+
+  parseBirthday() {
+    const m = moment.from(this.jalali_year + '/' + this.jalali_month + '/' + this.jalali_day, 'fa', 'YYYY/MM/DD');
+    this.student.birthday = m.unix();
+    console.log(m.unix());
   }
 
   previewProfilePic(files) {
@@ -81,6 +104,8 @@ export class EditprofileComponent implements OnInit {
 
   submit() {
     this.isSubmitting = true;
-    console.log('submitting....');
+    this.profileService.setProfilePic(this.profile_image_upload).subscribe(() => {
+      console.log('image upload done !');
+    });
   }
 }

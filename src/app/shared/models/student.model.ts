@@ -1,4 +1,5 @@
 import {Music} from './music.model';
+import {TimelinePicture} from './timeline.model';
 
 export class Student {
   username: string;
@@ -17,5 +18,5 @@ export class Student {
   link_instagram?: string;
   link_linkedin?: string;
   skills?: string[];
-  timeline_pics?: string[];
+  timeline_pics?: TimelinePicture[];
 }

@@ -61,7 +61,7 @@ export class AuthService {
   }
 
   getMe(): Student {
-    return this.me;
+    return new Student();
   }
 
   doAuthorizationRedirect(authUrl: string) {
