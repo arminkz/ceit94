@@ -17,6 +17,7 @@ import { AuthService } from './auth.service';
 import { AuthInterceptor } from './auth.interceptor';
 import { VoteComponent } from './vote/vote.component';
 import { UserSearchComponent } from './usersearch/usersearch.component';
+import {PersianifyPipe} from './shared/pipes/persianify.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UserSearchComponent } from './usersearch/usersearch.component';
     ProfileComponent,
     EditprofileComponent,
     FilterPipe,
+    PersianifyPipe,
     NotFoundComponent,
     VoteComponent,
     UserSearchComponent

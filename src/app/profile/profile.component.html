@@ -155,7 +155,7 @@
               <div class="col-center">
                 <div class="profile-pic-spacer">
                   <div class="profile-pic-spacer-2">
-                    <img *ngIf="student && student.profile_pic" class="profile-pic" [ngClass]="setColorClass()" [src]="getStudentProfilePic(student)" alt=""/>
+                    <img *ngIf="student && student.profile_pic" class="profile-pic" [ngClass]="setColorClass()" [src]="student.profile_pic" alt=""/>
                     <img *ngIf="!student || !student.profile_pic" class="profile-pic" [ngClass]="setColorClass()" src="../../assets/profile.jpg" alt=""/>
                   </div>
                 </div>
@@ -174,7 +174,7 @@
 
             <div class="row pf-age-row align-content-center">
               <div class="col pf-age">
-                <p><span>۲۲</span>.۲۳۴۳۴۷۸۵۱</p>
+                <p><span>{{age_year | persianify}}</span>{{age_float | persianify}}</p>
                 <p class="pf-age-label">سال</p>
               </div>
             </div>
@@ -182,7 +182,7 @@
             <div class="row bio-row">
               <div class="col-10 offset-1">
                 <div class="fa">
-                  <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان </p>
+                  <p>{{student.bio}}</p>
                 </div>
               </div>
             </div>

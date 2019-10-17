@@ -1,20 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {StudentService} from '../student.service';
 import {Student} from '../shared/models/student.model';
 import {AuthService} from '../auth.service';
 import {environment} from '../../environments/environment';
 import {debounceTime, delay} from 'rxjs/operators';
+import * as moment from 'jalali-moment';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit , OnDestroy {
 
   isLoaded = false;
   menu_activated = false;
+
+  interval: any;
+  age_year: string;
+  age_float: string;
 
   student: Student;
 
@@ -30,8 +35,23 @@ export class ProfileComponent implements OnInit {
     this.studentService.getStudent(id).pipe(delay(1000))
       .subscribe(student => {
         this.student = student;
+        this.student.birthday = 844732800; // TODO: remove this piece of hammered shit
         this.isLoaded = true;
       });
+    // Age counter
+    this.interval = setInterval(() => {
+      const age = (moment().unix() - this.student.birthday) / 31556926;
+      const z = Math.floor(age);
+      const q = age - z;
+      this.age_year = String(z);
+      this.age_float = String(q).substring(1, 9);
+    }, 100);
+  }
+
+  ngOnDestroy() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
   }
 
   setColorClass() {
@@ -49,9 +69,17 @@ export class ProfileComponent implements OnInit {
     return classes;
   }
 
-  getStudentProfilePic(student: Student) {
-    return environment.staticUrl + '/' + student.profile_pic;
+  getAgeYear(unixTimestamp: number) {
+    return Math.floor((moment().unix() - unixTimestamp) / 31556926);
   }
+
+  getAgeFloat(unixTimestamp: number) {
+    return String(((moment().unix() - unixTimestamp) / 31556926) - this.getAgeYear(unixTimestamp)).substring(1);
+  }
+
+  /*getStudentProfilePic(student: Student) {
+    return environment.staticUrl + '/' + student.profile_pic;
+  }*/
 
   gotoLogin() {
     this.auth.redirectUrl = this.router.url;
