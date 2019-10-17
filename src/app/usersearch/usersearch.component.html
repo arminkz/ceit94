@@ -1,7 +1,13 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content main">
+    <div *ngIf="!isLoaded" class="modal-content main">
+      <div class="spinner">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
+      </div>
+    </div>
+    <div *ngIf="isLoaded" class="modal-content main">
       <!--Search Bar-->
       <div class="row no-gutters align-items-center search-box">
         <div class="col">

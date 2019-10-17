@@ -13,6 +13,8 @@ export class UserSearchComponent implements OnInit {
   @Input() voteName: string;
   @Output() selectedUser = new EventEmitter<Student>();
 
+  isLoaded = false;
+
   searchText: string;
   students: Student[];
 
@@ -21,6 +23,7 @@ export class UserSearchComponent implements OnInit {
   ngOnInit() {
     this.studentService.getStudents().subscribe(students => {
       this.students = students;
+      this.isLoaded = true;
     });
   }
 
