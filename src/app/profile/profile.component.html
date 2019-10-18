@@ -379,7 +379,7 @@
               </div>
             </div>
 
-            <div class="row section">
+            <div *ngIf="student.timeline_pics && student.timeline_pics.length > 0" class="row section">
               <div class="col">
                 <div class="section-title">
                   <p class="section-label">تایم لاین</p>
@@ -395,30 +395,17 @@
                 <div class="row section-content-timeline no-gutters">
 
                   <div class="timeline" [ngClass]="setColorClass()">
-                    <div class="tl-container tl-left">
+
+                    <div *ngFor="let tl of student.timeline_pics; let i = index" class="tl-container tl-left"
+                         [ngClass]="{'tl-left' : i % 2 != 0 , 'tl-right' : i % 2 == 0}">
                       <div class="tl-content">
-                        <img src="../../assets/britney.png" alt=""/>
+                        <img [src]="tl.pic" alt=""/>
                       </div>
                       <div class="tl-year">
-                        <p>۱۳۹۴</p>
+                        <p>{{tl.year | persianify}}</p>
                       </div>
                     </div>
-                    <div class="tl-container tl-right">
-                      <div class="tl-content">
-                        <img src="../../assets/britney.png" alt=""/>
-                      </div>
-                      <div class="tl-year">
-                        <p>۱۳۹۵</p>
-                      </div>
-                    </div>
-                    <div class="tl-container tl-left">
-                      <div class="tl-content">
-                        <img src="../../assets/britney.png" alt=""/>
-                      </div>
-                      <div class="tl-year">
-                        <p>۱۳۹۶</p>
-                      </div>
-                    </div>
+
                   </div>
 
                 </div>
