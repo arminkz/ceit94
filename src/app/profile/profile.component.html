@@ -552,7 +552,7 @@
             </div>
 
 
-            <div class="row section">
+            <div *ngIf="student.quote" class="row section">
               <div class="col">
                 <div class="section-title">
                   <p class="section-label">سخنی از {{student.firstname}}</p>
@@ -564,15 +564,9 @@
                 </div>
 
                 <div class="row section-content-smalltalk no-gutters">
-
                   <div class="col-12 col-sm-10 col-md-6 offset-sm-1 offset-md-3 pf-smalltalk">
-                    یه سخن کوتاه از ارمین
-                    لورم ایپسوم متن ساختگی با تولید سادگی
-                    نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                    است. چاپگرها ومتون بلکه روزنامه و مجله در
-                    ستون و سطرآنچنان که لازم است
+                    {{student.quote}}
                   </div>
-
                 </div>
               </div>
             </div>
