@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit , OnDestroy {
   age_year: string;
   age_float: string;
 
-  student: Student;
+  student: Student = new Student();
 
   constructor(
     private router: Router,
@@ -67,14 +67,6 @@ export class ProfileComponent implements OnInit , OnDestroy {
     };
 
     return classes;
-  }
-
-  getAgeYear(unixTimestamp: number) {
-    return Math.floor((moment().unix() - unixTimestamp) / 31556926);
-  }
-
-  getAgeFloat(unixTimestamp: number) {
-    return String(((moment().unix() - unixTimestamp) / 31556926) - this.getAgeYear(unixTimestamp)).substring(1);
   }
 
   /*getStudentProfilePic(student: Student) {
