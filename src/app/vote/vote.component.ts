@@ -13,7 +13,6 @@ import {HttpClient} from '@angular/common/http';
 export class VoteComponent implements OnInit {
 
   isLoaded = false;
-  menu_activated = false;
 
   votes: Vote[];
   selectedVote: Vote;

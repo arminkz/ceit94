@@ -9,8 +9,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class LandingComponent implements OnInit, OnDestroy {
 
-  menu_activated = false;
-
   interval: any;
   now: Date;
   grad_rem = 0;

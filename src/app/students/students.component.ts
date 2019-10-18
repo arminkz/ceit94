@@ -14,7 +14,6 @@ import {delay} from 'rxjs/operators';
 export class StudentsComponent implements OnInit {
 
   isLoaded = false;
-  menu_activated = false;
 
   students: Student[];
   searchText: string;
@@ -48,14 +47,5 @@ export class StudentsComponent implements OnInit {
       c8: student.fav_color === 8
     };
     return classes;
-  }
-
-  /*getStudentProfilePic(student: Student) {
-    return environment.staticUrl + '/' + student.profile_pic;
-  }*/
-
-  gotoLogin() {
-    this.auth.redirectUrl = this.router.url;
-    this.router.navigateByUrl('/login');
   }
 }

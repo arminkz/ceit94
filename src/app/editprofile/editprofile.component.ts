@@ -17,7 +17,6 @@ import {ProfileService} from '../profile.service';
 export class EditprofileComponent implements OnInit {
 
   isLoaded = false;
-  menu_activated = false;
   isSubmitting = false;
   edit_subpage = 0;
 
@@ -53,21 +52,10 @@ export class EditprofileComponent implements OnInit {
       this.jalali_day = date[2];
     });
 
-    // this.student = new Student();
-    /*this.studentService.getMe().subscribe(
-      (resp) => {
-        this.student = resp;
-      });*/
-
     if (this.auth.profileCompleted) {
       // todo
     } else {
     }
-  }
-
-  gotoLogin() {
-    this.auth.redirectUrl = this.router.url;
-    this.router.navigateByUrl('/login');
   }
 
   parseBirthday() {
