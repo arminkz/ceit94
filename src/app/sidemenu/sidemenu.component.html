@@ -133,11 +133,15 @@
       </a>
     </nav>
 
+    <!-- Top Button -->
+    <button *ngIf="topButton" class="toggle-button" type="button" (click)="menu_activated = !menu_activated">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30.85" height="22.35" viewBox="0 0 48.213 34.928"><g transform="translate(-68.395 -70.536)"><rect width="48.213" height="5.547" rx="2.774" transform="translate(68.395 70.536)"/><rect width="38.094" height="5.547" rx="2.774" transform="translate(68.395 85.227)"/><rect width="24.404" height="5.547" rx="2.774" transform="translate(68.395 99.916)"/></g></svg>
+    </button>
+
     <!-- Content -->
-    <div class="content-wrapper">
+    <div [ngClass]="{'content-wrapper':topNav}">
       <ng-content></ng-content>
     </div>
-
   </div>
 
   <!-- Dark Overlay element -->
