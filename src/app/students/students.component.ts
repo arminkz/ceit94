@@ -33,7 +33,7 @@ export class StudentsComponent implements OnInit {
   }
 
   clickedStudent(student: Student) {
-    this.router.navigateByUrl('/profile/' + student.std_number);
+    this.router.navigateByUrl('/profile/' + student.username);
   }
 
   getStudentColorClass(student: Student) {
