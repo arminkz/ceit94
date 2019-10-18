@@ -16,14 +16,16 @@ import {ProfileService} from '../profile.service';
 })
 export class EditprofileComponent implements OnInit {
 
+  isLoaded = false;
   menu_activated = false;
   isSubmitting = false;
   edit_subpage = 0;
 
-  student: Student;
+  student: Student = new Student();
 
   profile_image_upload: File;
   profile_image_preview: any;
+  profile_image_changed = false;
 
   jalali_year: string;
   jalali_month: string;
@@ -42,6 +44,7 @@ export class EditprofileComponent implements OnInit {
     console.log('getting my info ...');
     this.profileService.getProfile().subscribe((resp) => {
       this.student = resp;
+      this.isLoaded = true;
       // init jalali birthday
       const m: string = moment.unix(this.student.birthday).locale('fa').format('YYYY/MM/DD');
       const date: string[] = m.split('/');
@@ -59,9 +62,6 @@ export class EditprofileComponent implements OnInit {
     if (this.auth.profileCompleted) {
       // todo
     } else {
-      // console.log('user data : ');
-      // console.log(this.auth.me);
-      // this.newStudent = this.auth.me;
     }
   }
 
@@ -95,6 +95,7 @@ export class EditprofileComponent implements OnInit {
         reader.onload = () => {
           this.profile_image_preview = reader.result;
         };
+        this.profile_image_changed = true;
       },
       error => {
         console.log('error resizing picture: ', error);
@@ -104,8 +105,10 @@ export class EditprofileComponent implements OnInit {
 
   submit() {
     this.isSubmitting = true;
-    this.profileService.setProfilePic(this.profile_image_upload).subscribe(() => {
-      console.log('image upload done !');
-    });
+    if (this.profile_image_changed) {
+      this.profileService.setProfilePic(this.profile_image_upload).subscribe(() => {
+        console.log('image upload done !');
+      });
+    }
   }
 }

@@ -135,7 +135,18 @@
 
     </nav>
 
-    <div class="main">
+    <div *ngIf="!isLoaded" class="main">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="spinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isLoaded" class="main">
       <div class="container">
         <!-- Login Box -->
         <div class="row">
@@ -261,11 +272,14 @@
                       <div class="row">
                         <div class="col-center">
                           <label for="file-upload">
-                            <div *ngIf="!profile_image_preview" class="profile-pic-placeholder">
+                            <div *ngIf="!student.profile_pic && !profile_image_preview" class="profile-pic-placeholder">
                               <p>آپلود عکس</p>
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45.282 42.098">
                                 <path d="M38.207 0H7.075A7.083 7.083 0 0 0 0 7.075v24.764a7.083 7.083 0 0 0 7.075 7.075h16.8a1.769 1.769 0 0 0 1.4-2.851l-4.627-5.979 12.827-16.311 8.27 9.865v2.983a1.769 1.769 0 1 0 3.538 0V7.075A7.083 7.083 0 0 0 38.207 0zm-3.42 9.83a1.769 1.769 0 0 0-2.746.043L18.419 27.2l-4.638-6a1.768 1.768 0 0 0-1.4-.686 1.768 1.768 0 0 0-1.4.69l-3.894 5.065a1.769 1.769 0 1 0 2.8 2.157l2.5-3.243 7.888 10.194h-13.2a3.542 3.542 0 0 1-3.538-3.538V7.075a3.542 3.542 0 0 1 3.538-3.537h31.132a3.542 3.542 0 0 1 3.538 3.538v11.055zm-22.4-3.463a5.306 5.306 0 1 0 5.306 5.306 5.312 5.312 0 0 0-5.311-5.305zm0 7.075a1.769 1.769 0 1 1 1.769-1.769 1.771 1.771 0 0 1-1.774 1.77zM45.282 33.7a1.769 1.769 0 0 1-1.769 1.769h-4.864v4.864a1.769 1.769 0 1 1-3.538 0v-4.868h-4.864a1.769 1.769 0 1 1 0-3.538h4.864v-4.864a1.769 1.769 0 1 1 3.538 0v4.864h4.864a1.769 1.769 0 0 1 1.769 1.773zm0 0"/>
                               </svg>
+                            </div>
+                            <div *ngIf="student.profile_pic && !profile_image_changed" class="profile-pic-placeholder">
+                              <img [src]="student.profile_pic" />
                             </div>
                             <div *ngIf="profile_image_preview" class="profile-pic-placeholder">
                               <img [src]="sanitizer.bypassSecurityTrustUrl(profile_image_preview)" />
