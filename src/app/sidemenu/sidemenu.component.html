@@ -6,12 +6,12 @@
       </a>
     </div>
 
-    <img *ngIf="!auth.isLoggedIn() || !auth.getMe() || !auth.getMe().profile_pic" class="side-menu-pic" src="../../assets/profile.jpg" alt=""/>
-    <img *ngIf="auth.isLoggedIn() && auth.getMe() && auth.getMe().profile_pic" class="side-menu-pic" [src]="auth.getMe().profile_pic" alt=""/>
+    <img *ngIf="!auth.isLoggedIn() || !me || !me.profile_pic" class="side-menu-pic" src="../../assets/profile.jpg" alt=""/>
+    <img *ngIf="auth.isLoggedIn() && me && me.profile_pic" class="side-menu-pic" [src]="me.profile_pic" alt=""/>
 
     <p class="side-menu-username">
       <a *ngIf="!auth.isLoggedIn()" (click)="gotoLogin()" >ورود به حساب کاربری</a>
-      <a *ngIf="auth.isLoggedIn()" routerLink="/profile/{{auth.getMe().username}}">{{auth.getMe().username}}</a>
+      <a *ngIf="auth.isLoggedIn()" routerLink="/profile/{{me.username}}">{{me.username}}</a>
     </p>
 
     <p *ngIf="!auth.isLoggedIn()" class="side-menu-welcome">لطفا وارد شوید</p>

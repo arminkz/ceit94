@@ -96,10 +96,16 @@ export class EditprofileComponent implements OnInit {
     if (this.profile_image_changed) {
       this.profileService.setProfilePic(this.profile_image_upload).subscribe(() => {
         console.log('image upload done !');
+        this.profileService.setProfile(this.student).subscribe(() => {
+          console.log('profile updated !');
+          this.router.navigateByUrl('/');
+        });
+      });
+    } else {
+      this.profileService.setProfile(this.student).subscribe(() => {
+        console.log('profile updated !');
+        this.router.navigateByUrl('/');
       });
     }
-    this.profileService.setProfile(this.student).subscribe(() => {
-      console.log('profile updated !');
-    });
   }
 }
