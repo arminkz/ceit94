@@ -7,14 +7,16 @@ import {ProfileComponent} from './profile/profile.component';
 import {EditprofileComponent} from './editprofile/editprofile.component';
 import {NotFoundComponent} from './notfound/notfound.component';
 import {VoteComponent} from './vote/vote.component';
+import {SideMenuComponent} from './sidemenu/sidemenu.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
   {path: 'students', component: StudentsComponent},
+  {path: 'profile/:id', component: ProfileComponent},
   {path: 'login', component: LoginComponent},
   {path: 'edit', component: EditprofileComponent},
-  {path: 'profile/:id', component: ProfileComponent},
   {path: 'vote', component: VoteComponent},
+  {path: 'side', component: SideMenuComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];

@@ -18,6 +18,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import { VoteComponent } from './vote/vote.component';
 import { UserSearchComponent } from './usersearch/usersearch.component';
 import {PersianifyPipe} from './shared/pipes/persianify.pipe';
+import { SideMenuComponent } from './sidemenu/sidemenu.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {PersianifyPipe} from './shared/pipes/persianify.pipe';
     PersianifyPipe,
     NotFoundComponent,
     VoteComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,

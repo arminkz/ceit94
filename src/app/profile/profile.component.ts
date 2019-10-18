@@ -14,8 +14,8 @@ import * as moment from 'jalali-moment';
 })
 export class ProfileComponent implements OnInit , OnDestroy {
 
+  titlePasser = '';
   isLoaded = false;
-  menu_activated = false;
 
   interval: any;
   age_year: string;
@@ -35,6 +35,7 @@ export class ProfileComponent implements OnInit , OnDestroy {
     this.studentService.getStudent(id).pipe(delay(1000))
       .subscribe(student => {
         this.student = student;
+        this.titlePasser = this.student.firstname + ' ' + this.student.lastname;
         this.isLoaded = true;
       });
     // Age counter
@@ -66,15 +67,6 @@ export class ProfileComponent implements OnInit , OnDestroy {
     };
 
     return classes;
-  }
-
-  /*getStudentProfilePic(student: Student) {
-    return environment.staticUrl + '/' + student.profile_pic;
-  }*/
-
-  gotoLogin() {
-    this.auth.redirectUrl = this.router.url;
-    this.router.navigateByUrl('/login');
   }
 
 }
