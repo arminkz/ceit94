@@ -172,7 +172,7 @@
               </div>
             </div>
 
-            <div class="row pf-age-row align-content-center">
+            <div *ngIf="student.birthday" class="row pf-age-row align-content-center">
               <div class="col pf-age">
                 <p><span>{{age_year | persianify}}</span>{{age_float | persianify}}</p>
                 <p class="pf-age-label">سال</p>

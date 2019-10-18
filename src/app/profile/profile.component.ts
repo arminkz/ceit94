@@ -35,7 +35,6 @@ export class ProfileComponent implements OnInit , OnDestroy {
     this.studentService.getStudent(id).pipe(delay(1000))
       .subscribe(student => {
         this.student = student;
-        this.student.birthday = 844732800; // TODO: remove this piece of hammered shit
         this.isLoaded = true;
       });
     // Age counter
