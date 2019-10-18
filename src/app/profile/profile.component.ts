@@ -2,10 +2,12 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {StudentService} from '../student.service';
 import {Student} from '../shared/models/student.model';
+import {CommentModel} from '../shared/models/comment.model';
 import {AuthService} from '../auth.service';
 import {environment} from '../../environments/environment';
 import {debounceTime, delay} from 'rxjs/operators';
 import * as moment from 'jalali-moment';
+import {ProfileService} from '../profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -22,22 +24,40 @@ export class ProfileComponent implements OnInit , OnDestroy {
   age_float: string;
 
   student: Student = new Student();
+  me: Student = new Student();
+  comments: CommentModel[] = [];
+
+  commentText: string;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private studentService: StudentService,
+    private profileService: ProfileService,
     public auth: AuthService
   ) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.studentService.getStudent(id).pipe(delay(1000))
+    this.studentService.getStudent(id)
       .subscribe(student => {
         this.student = student;
         this.titlePasser = this.student.firstname + ' ' + this.student.lastname;
         this.isLoaded = true;
       });
+    this.studentService.getComments(id)
+      .subscribe(resp => {
+        console.log('got comments');
+        this.comments = resp;
+      });
+
+    if (this.auth.isLoggedIn()) {
+      this.profileService.getProfile()
+        .subscribe(resp => {
+          this.me = resp;
+        });
+    }
+
     // Age counter
     this.interval = setInterval(() => {
       const age = (moment().unix() - this.student.birthday) / 31556926;
@@ -67,6 +87,19 @@ export class ProfileComponent implements OnInit , OnDestroy {
     };
 
     return classes;
+  }
+
+  sendComment(str: string) {
+    this.studentService.sendComment(this.student.username, str)
+      .subscribe(() => {
+        // reload comments
+        this.studentService.getComments(this.student.username)
+          .subscribe(resp => {
+            this.comments = resp;
+          });
+        // clear textarea
+        this.commentText = '';
+      });
   }
 
 }

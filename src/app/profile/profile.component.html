@@ -444,87 +444,70 @@
             </div>
           </div>
 
-          <div class="row comment-row">
-            <div class="col-8 offset-1">
-              <div class="comment-text">
-                <p>بچه خوبیه !</p>
-              </div>
+          <div *ngFor="let comment of comments" class="row comment-row">
+            <div class="col-8 offset-1 comment-text">
+              <p>{{comment.text}}</p>
             </div>
             <div class="col-2">
               <div class="comment-sender">
                 <div class="row">
                   <div class="col-center">
-                    <img src="../../assets/ah@2x.png" alt=""/>
+                    <img [src]="comment.commenter.profile_pic" alt=""/>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-center">
-                    <p class="comment-sender-username">a.heydari</p>
+                    <p class="comment-sender-username">{{comment.commenter.username}}</p>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-center">
-                    <p class="comment-sender-info">(کامپیوتر ۹۴)</p>
+                    <p class="comment-sender-info">({{comment.commenter.faculty}})</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="row comment-row">
-            <div class="col-8 offset-1">
-              <div class="comment-text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Justo laoreet sit amet cursus sit amet dictum sit amet. Auctor augue mauris augue neque gravida in. Interdum velit euismod in pellentesque massa placerat duis ultricies lacus. Turpis in eu mi bibendum neque egestas congue. Enim blandit volutpat maecenas volutpat blandit aliquam etiam erat. Volutpat diam ut venenatis tellus in metus vulputate. Facilisis sed odio morbi quis commodo odio. Cum sociis natoque penatibus et magnis dis parturient montes nascetur. Eu ultrices vitae auctor eu augue. Leo vel fringilla est ullamcorper eget nulla. At urna condimentum mattis pellentesque id. Ultrices neque ornare aenean euismod elementum.
-                  Volutpat diam ut venenatis tellus in metus vulputate. Facilisis sed odio morbi quis commodo odio. Cum sociis natoque penatibus et magnis dis parturient montes nascetur. Eu ultrices vitae auctor eu augue. Leo vel fringilla est ullamcorper eget nulla. At urna condimentum mattis pellentesque id. Ultrices neque ornare aenean euismod elementum.</p>
+          <div *ngIf="auth.isLoggedIn()" class="row comment-row">
+            <div class="col-8 offset-1 comment-text">
+              <div class="row">
+                <div class="col-12">
+                  <textarea [(ngModel)]="commentText" spellcheck="false" placeholder="برای {{student.firstname}} کامنت بنویسید" ></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-auto">
+                  <button class="button-send" (click)="sendComment(commentText)">
+                    <div class="row no-gutters align-content-center">
+                      <div class="col-6 offset-2">
+                        ارسال
+                      </div>
+                      <div class="col-3 offset-1">
+                        <img src="../../assets/arrow.svg" alt=""/>
+                      </div>
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
             <div class="col-2">
               <div class="comment-sender">
                 <div class="row">
                   <div class="col-center">
-                    <img src="../../assets/ah@2x.png" alt=""/>
+                    <img [src]="me.profile_pic" alt=""/>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-center">
-                    <p class="comment-sender-username">a.heydari</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-center">
-                    <p class="comment-sender-info">(کامپیوتر ۹۴)</p>
+                    <p class="comment-sender-username">{{me.username}}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="row comment-row">
-            <div class="col-8 offset-1">
-              <div class="comment-text">
-                <p>تو بچه ی خوبی هستی !</p>
-              </div>
-            </div>
-            <div class="col-2">
-              <div class="comment-sender">
-                <div class="row">
-                  <div class="col-center">
-                    <img src="../../assets/ah@2x.png" alt=""/>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-center">
-                    <p class="comment-sender-username">a.heydari</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-center">
-                    <p class="comment-sender-info">(عمران ۹۴)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
 
         </div>
 

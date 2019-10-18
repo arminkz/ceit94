@@ -44,7 +44,7 @@
 $section-space : 20px;
 
 .main-area{
-  padding: $section-space 0 0 0;
+  padding: $section-space 0 100px 0;
 }
 
 .section{
@@ -559,5 +559,39 @@ $section-space : 20px;
     margin-top:2px;
     direction: rtl;
     text-align: right;
+  }
+
+  textarea {
+    font-family: IRANSans;
+    font-size: 17.5px;
+    color: #cdcdcd;
+    margin-top:2px;
+    direction: rtl;
+    text-align: right;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+  }
+
+  textarea:focus {
+    outline: none;
+  }
+}
+
+button.button-send {
+  background-color: #c60139;
+  width: 100px;
+  font-family: IRANSans;
+  font-size: 15px;
+  padding: 9px;
+  border-radius: 45px;
+  color: #FFF;
+  border: solid 1px #c60139;
+  outline: none;
+  margin-bottom: 15px;
+
+  img{
+    width: 7.8px;
+    height: 13.7px;
   }
 }
