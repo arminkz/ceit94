@@ -469,7 +469,7 @@
             </div>
           </div>
 
-          <div *ngIf="auth.isLoggedIn()" class="row comment-row">
+          <div *ngIf="auth.isLoggedIn() && me.username !== student.username" class="row comment-row">
             <div class="col-8 offset-1 comment-text">
               <div class="row">
                 <div class="col-12">
