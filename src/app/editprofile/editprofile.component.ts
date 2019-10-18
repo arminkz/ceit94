@@ -110,5 +110,8 @@ export class EditprofileComponent implements OnInit {
         console.log('image upload done !');
       });
     }
+    this.profileService.setProfile(this.student).subscribe(() => {
+      console.log('profile updated !');
+    });
   }
 }
