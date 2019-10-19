@@ -8,6 +8,8 @@ import {environment} from '../../environments/environment';
 import {debounceTime, delay} from 'rxjs/operators';
 import * as moment from 'jalali-moment';
 import {ProfileService} from '../profile.service';
+import {HashtagModel} from '../shared/models/hashtag.model';
+import {VoteService} from '../vote.service';
 
 @Component({
   selector: 'app-profile',
@@ -24,15 +26,17 @@ export class ProfileComponent implements OnInit , OnDestroy {
   age_float: string;
 
   student: Student = new Student();
-  me: Student = new Student();
   comments: CommentModel[] = [];
+  hashtags: HashtagModel[];
 
+  me: Student = new Student();
   commentText: string;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private studentService: StudentService,
+    private voteService: VoteService,
     private profileService: ProfileService,
     public auth: AuthService
   ) { }
@@ -45,10 +49,17 @@ export class ProfileComponent implements OnInit , OnDestroy {
         this.titlePasser = this.student.firstname + ' ' + this.student.lastname;
         this.isLoaded = true;
       });
+
     this.studentService.getComments(id)
       .subscribe(resp => {
         console.log('got comments');
         this.comments = resp;
+      });
+
+    this.voteService.getHashtags(id)
+      .subscribe(resp => {
+        console.log('got hashtags');
+        this.hashtags = resp;
       });
 
     if (this.auth.isLoggedIn()) {

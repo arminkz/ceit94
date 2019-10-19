@@ -105,7 +105,7 @@
             </div>
           </div>
 
-          <div class="row no-gutters dual-section">
+          <div *ngIf="false" class="row no-gutters dual-section">
             <div class="col-12 col-md-6 col-lg-6">
               <div class="row section">
                 <div class="col">
@@ -164,7 +164,7 @@
             </div>
           </div>
 
-          <div class="row section">
+          <div *ngIf="hashtags" class="row section">
             <div class="col">
               <div class="section-title">
                 <p class="section-label">هشتگ ها</p>
@@ -172,70 +172,15 @@
                   <path d="M273.661,114.318V67.035h-45.558L236.886,0h-47.69l-8.783,67.035h-60.084L129.113,0H81.425L72.64,67.035H7.804v47.283	h58.649l-6.904,52.791H7.804v47.289h45.559l-8.784,67.066h47.687l8.787-67.066h60.083l-8.786,67.066h47.691l8.783-67.066h64.836 v-47.289h-58.647l6.901-52.791H273.661z M167.326,167.109h-60.084l6.9-52.791h60.082L167.326,167.109z"/>
                 </svg>
               </div>
-              <div class="row section-content-hashtag align-content-center no-gutters">
+              <div class="row section-content-hashtag justify-content-end no-gutters">
 
-                <div class="col-auto">
+                <div *ngFor="let hashtag of hashtags" class="col-auto">
                   <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
                     <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">
-                      <p>۳۲</p>
+                      <p>{{hashtag.count | persianify}}</p>
                     </div>
                     <div class="col-auto pf-hashtag-title">
-                      به فنا رفته ترین
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-auto">
-                  <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
-                    <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">
-                      <p>۱۶</p>
-                    </div>
-                    <div class="col-auto pf-hashtag-title">
-                      خسته ترین
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-auto">
-                  <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
-                    <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">
-                      <p>۱۶</p>
-                    </div>
-                    <div class="col-auto pf-hashtag-title">
-                      گیمرترین
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-auto">
-                  <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
-                    <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">
-                      <p>۱۶</p>
-                    </div>
-                    <div class="col-auto pf-hashtag-title">
-                      خسته ترین
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-auto">
-                  <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
-                    <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">
-                      <p>۱۶</p>
-                    </div>
-                    <div class="col-auto pf-hashtag-title">
-                      فلان ترین
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-auto">
-                  <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
-                    <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">
-                      <p>۱۶</p>
-                    </div>
-                    <div class="col-auto pf-hashtag-title">
-                      نمی دونم ترین
+                      {{hashtag.name}}
                     </div>
                   </div>
                 </div>
@@ -277,7 +222,7 @@
             </div>
           </div>
 
-          <div class="row section">
+          <div *ngIf="false" class="row section">
             <div class="col">
               <div class="section-title">
                 <p class="section-label">گالری</p>
@@ -351,7 +296,7 @@
             </div>
           </div>
 
-          <div class="row no-gutters dual-section">
+          <div *ngIf="false" class="row no-gutters dual-section">
             <div class="col-12 col-md-6 col-lg-6">
               <div class="row section">
                 <div class="col">
@@ -436,9 +381,10 @@
             </div>
           </div>
 
-          <div class="main-spacer" [ngClass]="setColorClass()" ></div>
+          <div *ngIf="comments.length > 0 || (auth.isLoggedIn() && me.username !== student.username)"
+               class="main-spacer" [ngClass]="setColorClass()" ></div>
 
-          <div class="row">
+          <div *ngIf="comments.length > 0 || (auth.isLoggedIn() && me.username !== student.username)" class="row">
             <div class="col-center">
               <p class="comment-title">-- نظرات دوستان --</p>
             </div>

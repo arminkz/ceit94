@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Vote} from './shared/models/vote.model';
 import {Student} from './shared/models/student.model';
 import {environment} from '../environments/environment';
+import {HashtagModel} from './shared/models/hashtag.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class VoteService {
 
   submitVote(voteID: string, toUser: Student): Observable<any> {
     return this.http.post(environment.apiUrl + '/tops', {top_id: voteID, username: toUser.username});
+  }
+
+  getHashtags(username: string): Observable<HashtagModel[]> {
+    return this.http.get<HashtagModel[]>(environment.apiUrl + '/tops/' + username);
   }
 
 }
