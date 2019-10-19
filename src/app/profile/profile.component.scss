@@ -156,7 +156,7 @@ $section-space : 20px;
 }
 
 .section-content-smalltalk{
-  padding: 30px;
+  padding: 30px 30px 50px 30px;
 }
 
 
@@ -415,6 +415,17 @@ $section-space : 20px;
   }
 }
 
+.pf-bio {
+  p{
+    font-family: IRANSans;
+    font-size: 14px;
+    color: #FFF;
+    text-align: center;
+    direction: rtl;
+    margin:0;
+  }
+}
+
 .pf-hashtag{
   font-family: IRANSans;
   font-size: 18px;
@@ -492,11 +503,11 @@ $section-space : 20px;
   color: #FFF;
   font-size: 18.5px;
   direction: rtl;
-  text-align: right;
+  text-align: center;
 }
 
 .social-row{
-  margin-top: 11px;
+  margin-top: 40px;
 }
 
 .social-button{
