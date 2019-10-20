@@ -128,7 +128,7 @@
 
 .lp-button-panel{
   display: block;
-  height: auto;
+  height: 50px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 2vh;
@@ -136,7 +136,7 @@
   font-family: Arapix;
 }
 
-.lp-button-panel button{
+.lp-button-panel a{
   background-color: transparent;
   color: #ffffff4f;;
   border: 1px solid #ffffff4f;;
@@ -146,16 +146,18 @@
   font-size: 30px;
   width: 170px;
   transition: background-color 0.15s, color 0.15s;
+  padding: 10px 40px;
 }
 
-.lp-button-panel button:focus {
+/*.lp-button-panel button:focus {
   outline:0;
-}
+}*/
 
-.lp-button-panel button:hover{
+.lp-button-panel a:hover{
   background-color: #c70039;
   color: #FFF;
   border: 1px solid #FFF;
+  text-decoration: none;
 }
 
 .toggle-button{
@@ -185,6 +187,12 @@
   width: 100%;
   height: 100%;
   opacity: 0.3;
+}
+
+@media screen and (max-width: 576px) {
+  .shadow{
+    display: none;
+  }
 }
 
 
