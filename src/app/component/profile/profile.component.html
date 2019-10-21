@@ -172,6 +172,12 @@
               </div>
               <div class="row section-content-hashtag justify-content-end no-gutters">
 
+                <div *ngIf="hashtags.length == 0" class="col-auto">
+                  <div class="col-auto pf-hashtag-title">
+                    <p>برای رای دادن به {{student.firstname}} <a>اینجا</a> بروید</p>
+                  </div>
+                </div>
+
                 <div *ngFor="let hashtag of hashtags" class="col-auto">
                   <div class="row pf-hashtag no-gutters align-content-center" [ngClass]="setColorClass()">
                     <div class="col-auto pf-hashtag-count" [ngClass]="setColorClass()">

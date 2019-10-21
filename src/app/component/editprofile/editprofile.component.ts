@@ -51,11 +51,6 @@ export class EditprofileComponent implements OnInit {
       this.jalali_month = date[1];
       this.jalali_day = date[2];
     });
-
-    if (this.auth.profileCompleted) {
-      // todo
-    } else {
-    }
   }
 
   parseBirthday() {

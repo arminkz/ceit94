@@ -10,8 +10,6 @@ import {environment} from '../../environments/environment';
 })
 export class AuthService {
   redirectUrl = '';
-  me: Student = null;
-  profileCompleted: boolean;
 
   windowHandle: any;
   intervalHandle: any;
@@ -28,11 +26,10 @@ export class AuthService {
       console.log(resp);
       localStorage.setItem('token', resp['token']);
       localStorage.setItem('token_expire', String(moment().add(24, 'hours').unix()));
-      console.log('isLoggedIn() :' + this.isLoggedIn());
-      this.me = resp['user'];
-      localStorage.setItem('user' , JSON.stringify(resp['user']));
-      this.profileCompleted = resp['profileCompeleted'];
-      if (this.profileCompleted) {
+
+      const profileCompleted = resp['user'].profileCompeleted || false;
+
+      if (profileCompleted) {
         // redirect back
         if (this.redirectUrl === '') {
           this.router.navigateByUrl('/');
@@ -49,7 +46,6 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('token_expire');
-    localStorage.removeItem('user');
   }
 
   public isLoggedIn() {
