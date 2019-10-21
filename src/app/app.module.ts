@@ -6,19 +6,20 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 import { AppComponent } from './app.component';
-import { StudentsComponent } from './students/students.component';
-import { LandingComponent } from './landing/landing.component';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { EditprofileComponent } from './editprofile/editprofile.component';
-import { NotFoundComponent } from './notfound/notfound.component';
-import { FilterPipe } from './shared/pipes/filter.pipe';
-import { AuthService } from './auth.service';
-import { AuthInterceptor } from './auth.interceptor';
-import { VoteComponent } from './vote/vote.component';
-import { UserSearchComponent } from './usersearch/usersearch.component';
-import {PersianifyPipe} from './shared/pipes/persianify.pipe';
-import { SideMenuComponent } from './sidemenu/sidemenu.component';
+import { StudentsComponent } from './component/students/students.component';
+import { LandingComponent } from './component/landing/landing.component';
+import { LoginComponent } from './component/login/login.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { EditprofileComponent } from './component/editprofile/editprofile.component';
+import { NotFoundComponent } from './component/notfound/notfound.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { AuthService } from './services/auth.service';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { VoteComponent } from './component/vote/vote.component';
+import { UserSearchComponent } from './component/usersearch/usersearch.component';
+import {PersianifyPipe} from './pipes/persianify.pipe';
+import { SideMenuComponent } from './component/sidemenu/sidemenu.component';
+import { NavComponent } from './component/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SideMenuComponent } from './sidemenu/sidemenu.component';
     NotFoundComponent,
     VoteComponent,
     UserSearchComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
