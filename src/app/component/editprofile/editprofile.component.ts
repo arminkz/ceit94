@@ -5,7 +5,6 @@ import {Student} from '../../models/student.model';
 import {Ng2ImgMaxService} from 'ng2-img-max';
 import {DomSanitizer} from '@angular/platform-browser';
 import {HttpClient} from '@angular/common/http';
-import {StudentService} from '../../services/student.service';
 import * as moment from 'jalali-moment';
 import {ProfileService} from '../../services/profile.service';
 
@@ -19,6 +18,10 @@ export class EditprofileComponent implements OnInit {
   isLoaded = false;
   isSubmitting = false;
   edit_subpage = 0;
+
+  alumni_allowed_pages = [0, 1, 2, 3, 4, 9];
+  guest_allowed_pages = [0, 1, 9];
+  cur_page = 0;
 
   student: Student = new Student();
 
@@ -51,6 +54,40 @@ export class EditprofileComponent implements OnInit {
       this.jalali_month = date[1];
       this.jalali_day = date[2];
     });
+  }
+
+  nextPage() {
+    if (this.student.is94) {
+      this.cur_page += 1;
+      this.edit_subpage = this.alumni_allowed_pages[this.cur_page];
+    } else {
+      this.cur_page += 1;
+      this.edit_subpage = this.guest_allowed_pages[this.cur_page];
+    }
+  }
+
+  previousPage() {
+    if (this.student.is94) {
+      this.cur_page -= 1;
+      this.edit_subpage = this.alumni_allowed_pages[this.cur_page];
+    } else {
+      this.cur_page -= 1;
+      this.edit_subpage = this.guest_allowed_pages[this.cur_page];
+    }
+  }
+
+  getPages(): boolean[] {
+    const result = [];
+    if (this.student.is94) {
+      for (const i of this.alumni_allowed_pages) {
+        result.push(this.edit_subpage >= i);
+      }
+    } else {
+      for (const i of this.guest_allowed_pages) {
+        result.push(this.edit_subpage >= i);
+      }
+    }
+    return result;
   }
 
   parseBirthday() {

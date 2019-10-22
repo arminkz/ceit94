@@ -65,7 +65,7 @@
 
             <div class="row button-row">
               <div class="col-5 col-md-3 offset-6 offset-md-8">
-                <button class="button-next" (click)="edit_subpage = 1">
+                <button class="button-next" (click)="nextPage()">
                   <div class="row no-gutters align-content-center">
                     <div class="col-6 offset-3">
                       بعدی
@@ -83,7 +83,7 @@
           <div *ngIf="edit_subpage == 1">
             <div class="row top-row">
               <div class="col-1 offset-1">
-                <svg (click)="edit_subpage=0" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
+                <svg (click)="previousPage()" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
                   <g transform="rotate(180 56.354 13.657)">
                     <path id="Path_15" d="M112.148 15.009L100.4 26.753a1.913 1.913 0 0 1-2.705-2.7l10.392-10.392L97.7 3.265A1.913 1.913 0 1 1 100.4.56l11.749 11.74a1.912 1.912 0 0 1 0 2.7z" class="cls-1" data-name="Path 15"/>
                   </g>
@@ -163,7 +163,7 @@
 
             <div class="row button-row">
               <div class="col-5 col-md-3 offset-6 offset-md-8">
-                <button class="button-next" (click)="edit_subpage = 2">
+                <button class="button-next" (click)="nextPage()">
                   <div class="row no-gutters align-content-center">
                     <div class="col-6 offset-3">
                       بعدی
@@ -181,7 +181,7 @@
           <div *ngIf="edit_subpage == 2">
             <div class="row top-row">
               <div class="col-1 offset-1">
-                <svg (click)="edit_subpage=1" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
+                <svg (click)="previousPage()" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
                   <g transform="rotate(180 56.354 13.657)">
                     <path id="Path_15" d="M112.148 15.009L100.4 26.753a1.913 1.913 0 0 1-2.705-2.7l10.392-10.392L97.7 3.265A1.913 1.913 0 1 1 100.4.56l11.749 11.74a1.912 1.912 0 0 1 0 2.7z" class="cls-1" data-name="Path 15"/>
                   </g>
@@ -241,7 +241,7 @@
 
             <div class="row button-row">
               <div class="col-5 col-md-3 offset-6 offset-md-8">
-                <button class="button-next" (click)="edit_subpage = 3">
+                <button class="button-next" (click)="nextPage()">
                   <div class="row no-gutters align-content-center">
                     <div class="col-6 offset-3">
                       بعدی
@@ -259,7 +259,7 @@
           <div *ngIf="edit_subpage == 3">
             <div class="row top-row">
               <div class="col-1 offset-1">
-                <svg (click)="edit_subpage=2" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
+                <svg (click)="previousPage()" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
                   <g transform="rotate(180 56.354 13.657)">
                     <path id="Path_15" d="M112.148 15.009L100.4 26.753a1.913 1.913 0 0 1-2.705-2.7l10.392-10.392L97.7 3.265A1.913 1.913 0 1 1 100.4.56l11.749 11.74a1.912 1.912 0 0 1 0 2.7z" class="cls-1" data-name="Path 15"/>
                   </g>
@@ -335,7 +335,7 @@
 
             <div class="row button-row">
               <div class="col-5 col-md-3 offset-6 offset-md-8">
-                <button class="button-next" (click)="edit_subpage = 4">
+                <button class="button-next" (click)="nextPage()">
                   <div class="row no-gutters align-content-center">
                     <div class="col-6 offset-3">
                       بعدی
@@ -354,7 +354,7 @@
           <div *ngIf="edit_subpage == 4">
             <div class="row top-row">
               <div class="col-1 offset-1">
-                <svg (click)="edit_subpage=3" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
+                <svg (click)="previousPage()" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
                   <g transform="rotate(180 56.354 13.657)">
                     <path id="Path_15" d="M112.148 15.009L100.4 26.753a1.913 1.913 0 0 1-2.705-2.7l10.392-10.392L97.7 3.265A1.913 1.913 0 1 1 100.4.56l11.749 11.74a1.912 1.912 0 0 1 0 2.7z" class="cls-1" data-name="Path 15"/>
                   </g>
@@ -401,7 +401,7 @@
 
             <div class="row button-row">
               <div class="col-5 col-md-3 offset-6 offset-md-8">
-                <button class="button-next" (click)="edit_subpage = 9">
+                <button class="button-next" (click)="nextPage()">
                   <div class="row no-gutters align-content-center">
                     <div class="col-6 offset-3">
                       بعدی
@@ -419,7 +419,7 @@
           <div *ngIf="edit_subpage == 9">
             <div class="row top-row">
               <div class="col-1 offset-1">
-                <svg *ngIf="!isSubmitting" (click)="edit_subpage=4" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
+                <svg *ngIf="!isSubmitting" (click)="previousPage()" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
                   <g transform="rotate(180 56.354 13.657)">
                     <path id="Path_15" d="M112.148 15.009L100.4 26.753a1.913 1.913 0 0 1-2.705-2.7l10.392-10.392L97.7 3.265A1.913 1.913 0 1 1 100.4.56l11.749 11.74a1.912 1.912 0 0 1 0 2.7z" class="cls-1" data-name="Path 15"/>
                   </g>
@@ -474,13 +474,7 @@
     <!-- Page Counter -->
     <div *ngIf="!isSubmitting" class="row pagination">
       <div class="col-center">
-        <div class="page-circle" [ngClass]="{'active' : edit_subpage >= 0}"></div>
-        <div class="page-circle" [ngClass]="{'active' : edit_subpage >= 1}"></div>
-        <div class="page-circle" [ngClass]="{'active' : edit_subpage >= 2}"></div>
-        <div class="page-circle" [ngClass]="{'active' : edit_subpage >= 3}"></div>
-        <div class="page-circle" [ngClass]="{'active' : edit_subpage >= 4}"></div>
-
-        <div class="page-circle" [ngClass]="{'active' : edit_subpage >= 9}"></div>
+        <div *ngFor="let page of getPages()" class="page-circle" [ngClass]="{'active' : page}"></div>
       </div>
     </div>
 
