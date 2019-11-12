@@ -449,6 +449,9 @@ $section-space : 20px;
 
 .pf-hashtag-notice{
   color: #FFF;
+  font-family: IRANSans;
+  font-size: 16px;
+  margin-top: 15px;
 }
 
 @include color-setter('.pf-hashtag-count',background-color);
