@@ -447,6 +447,13 @@ $section-space : 20px;
   p{margin: 3px 0 0 0;}
 }
 
+.pf-hashtag-notice{
+  color: #FFF;
+  font-family: IRANSans;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
 @include color-setter('.pf-hashtag-count',background-color);
 
 .pf-hashtag-title{

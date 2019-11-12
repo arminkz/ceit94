@@ -8,15 +8,15 @@ import {EditprofileComponent} from './component/editprofile/editprofile.componen
 import {NotFoundComponent} from './component/notfound/notfound.component';
 import {VoteComponent} from './component/vote/vote.component';
 import {SideMenuComponent} from './component/sidemenu/sidemenu.component';
+import {AuthGuard} from './guard/auth.guard';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
   {path: 'students', component: StudentsComponent},
   {path: 'profile/:id', component: ProfileComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'edit', component: EditprofileComponent},
-  {path: 'vote', component: VoteComponent},
-  {path: 'side', component: SideMenuComponent},
+  {path: 'edit', component: EditprofileComponent, canActivate: [AuthGuard]},
+  {path: 'vote', component: VoteComponent, canActivate: [AuthGuard]},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
