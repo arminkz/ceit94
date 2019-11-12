@@ -208,7 +208,7 @@ $section-space : 20px;
   border-radius: 50%;
 }
 
-@include color-setter('.profile-pic',border-color)
+@include color-setter('.profile-pic',border-color);
 
 .pf-username{
   font-family: IRANSans;
@@ -238,7 +238,7 @@ $section-space : 20px;
   margin-left: -3px;
 }
 
-@include color-setter('.timeline::after',background-color)
+@include color-setter('.timeline::after',background-color);
 
 .tl-container {
   //padding: 10px 40px;
@@ -267,7 +267,7 @@ $section-space : 20px;
   text-align: center;
 }
 
-@include color-setter-child('.tl-year',border-color)
+@include color-setter-child('.tl-year',border-color);
 
 /* Place the container to the left */
 .tl-left {
@@ -289,7 +289,7 @@ $section-space : 20px;
   right: 30px;
 }
 
-@include color-setter-child('.tl-left::before',background-color)
+@include color-setter-child('.tl-left::before',background-color);
 
 .tl-right::before {
   content: " ";
@@ -301,7 +301,7 @@ $section-space : 20px;
   left: 30px;
 }
 
-@include color-setter-child('.tl-right::before',background-color)
+@include color-setter-child('.tl-right::before',background-color);
 
 .tl-right {
   .tl-year{
@@ -435,7 +435,7 @@ $section-space : 20px;
   margin: 5px;
 }
 
-@include color-setter-dark('.pf-hashtag',background-color)
+@include color-setter-dark('.pf-hashtag',background-color);
 
 .pf-hashtag-count{
   width: 24px;
@@ -447,7 +447,7 @@ $section-space : 20px;
   p{margin: 3px 0 0 0;}
 }
 
-@include color-setter('.pf-hashtag-count',background-color)
+@include color-setter('.pf-hashtag-count',background-color);
 
 .pf-hashtag-title{
   margin-left: 8px;

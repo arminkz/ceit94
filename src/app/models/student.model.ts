@@ -8,7 +8,7 @@ export class Student {
   firstname: string;
   lastname: string;
   fav_color: number;
-  is94: boolean;
+  is_alumni: boolean;
   bio?: string;
   quote?: string;
   faculty?: string;

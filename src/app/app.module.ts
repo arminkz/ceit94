@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 import { AppComponent } from './app.component';
 import { StudentsComponent } from './component/students/students.component';
@@ -17,9 +16,12 @@ import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { VoteComponent } from './component/vote/vote.component';
 import { UserSearchComponent } from './component/usersearch/usersearch.component';
-import {PersianifyPipe} from './pipes/persianify.pipe';
+import { PersianifyPipe } from './pipes/persianify.pipe';
 import { SideMenuComponent } from './component/sidemenu/sidemenu.component';
 import { NavComponent } from './component/nav/nav.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { ImageCropComponent } from './component/imagecrop/imagecrop.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -35,14 +37,16 @@ import { NavComponent } from './component/nav/nav.component';
     VoteComponent,
     UserSearchComponent,
     SideMenuComponent,
-    NavComponent
+    NavComponent,
+    ImageCropComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    Ng2ImgMaxModule
+    ImageCropperModule
   ],
   providers: [
     AuthService,
@@ -52,6 +56,9 @@ import { NavComponent } from './component/nav/nav.component';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ImageCropComponent
+  ]
 })
 export class AppModule { }

@@ -149,7 +149,7 @@
                             <img [src]="sanitizer.bypassSecurityTrustUrl(profile_image_preview)" />
                           </div>
                         </label>
-                        <input #file id="file-upload" type="file" accept='image/*' (change)="previewProfilePic(file.files)"/>
+                        <input #file id="file-upload" type="file" accept='image/*' (change)="previewProfilePic($event)"/>
                       </div>
                     </div>
                   </div>

@@ -1,0 +1,26 @@
+.modal-body {
+  background-color: #1e1e1e;
+}
+
+.cropper {
+  margin: 20px;
+}
+
+button.button-next {
+  background-color: #c60139;
+  width: 100%;
+  font-family: IRANSans;
+  font-size: 15px;
+  padding: 9px;
+  border-radius: 45px;
+  color: #FFF;
+  border: solid 1px #c60139;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 5px;
+
+  img{
+    width: 7.8px;
+    height: 13.7px;
+  }
+}

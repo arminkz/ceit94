@@ -10,7 +10,7 @@
 
   <p class="side-menu-username">
     <a *ngIf="!auth.isLoggedIn()" (click)="gotoLogin()" >ورود به حساب کاربری</a>
-    <a *ngIf="auth.isLoggedIn()" routerLink="/profile/{{me.username}}">{{me.username}}</a>
+    <a *ngIf="auth.isLoggedIn() && me && me.username" routerLink="/profile/{{me.username}}">{{me.username}}</a>
   </p>
 
   <p *ngIf="!auth.isLoggedIn()" class="side-menu-welcome">لطفا وارد شوید</p>

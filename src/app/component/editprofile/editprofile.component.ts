@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {Student} from '../../models/student.model';
-import {Ng2ImgMaxService} from 'ng2-img-max';
 import {DomSanitizer} from '@angular/platform-browser';
 import {HttpClient} from '@angular/common/http';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'jalali-moment';
 import {ProfileService} from '../../services/profile.service';
+import {ImageCropComponent} from '../imagecrop/imagecrop.component';
+
 
 @Component({
   selector: 'app-editprofile',
@@ -25,9 +27,10 @@ export class EditprofileComponent implements OnInit {
 
   student: Student = new Student();
 
-  profile_image_upload: File;
   profile_image_preview: any;
+  profile_image_file: any;
   profile_image_changed = false;
+  fileEvent: any;
 
   jalali_year: string;
   jalali_month: string;
@@ -37,7 +40,7 @@ export class EditprofileComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     public auth: AuthService,
-    private ng2ImgMax: Ng2ImgMaxService,
+    private modalService: NgbModal,
     public sanitizer: DomSanitizer,
     private profileService: ProfileService
   ) {}
@@ -57,7 +60,7 @@ export class EditprofileComponent implements OnInit {
   }
 
   nextPage() {
-    if (this.student.is94) {
+    if (this.student.is_alumni) {
       this.cur_page += 1;
       this.edit_subpage = this.alumni_allowed_pages[this.cur_page];
     } else {
@@ -67,7 +70,7 @@ export class EditprofileComponent implements OnInit {
   }
 
   previousPage() {
-    if (this.student.is94) {
+    if (this.student.is_alumni) {
       this.cur_page -= 1;
       this.edit_subpage = this.alumni_allowed_pages[this.cur_page];
     } else {
@@ -78,7 +81,7 @@ export class EditprofileComponent implements OnInit {
 
   getPages(): boolean[] {
     const result = [];
-    if (this.student.is94) {
+    if (this.student.is_alumni) {
       for (const i of this.alumni_allowed_pages) {
         result.push(this.edit_subpage >= i);
       }
@@ -96,19 +99,26 @@ export class EditprofileComponent implements OnInit {
     console.log(m.unix());
   }
 
-  previewProfilePic(files) {
-    if (files.length === 0) {
-      return;
-    }
-    // check file type
-    const mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      alert('only images are supported.');
-      return;
-    }
+  previewProfilePic(event: any) {
+    this.fileEvent = event;
+    this.openFormModal();
+    // this.cropComponent.openModel();
+    // if (files.length === 0) {
+    //     //   return;
+    //     // }
+    //     // // check file type
+    //     // const mimeType = files[0].type;
+    //     // if (mimeType.match(/image\/*/) == null) {
+    //     //   alert('only images are supported.');
+    //     //   return;
+    //     // }
+
+    // this.imageChangedEvent = event;
     // resize image for upload and preview it
-    this.ng2ImgMax.resizeImage(files[0], 255, 255).subscribe(
+    /*this.ng2ImgToolsService.resizeExactCropImage(files[0], 255, 255).subscribe(
       result => {
+        console.log('image resized !');
+        console.log(result);
         this.profile_image_upload = new File([result], result.name);
         const reader = new FileReader();
         reader.readAsDataURL(this.profile_image_upload);
@@ -120,13 +130,34 @@ export class EditprofileComponent implements OnInit {
       error => {
         console.log('error resizing picture: ', error);
       }
-    );
+    );*/
   }
+
+  openFormModal() {
+    const modalRef = this.modalService.open(ImageCropComponent);
+    modalRef.componentInstance.imageChangedEvent = this.fileEvent;
+    modalRef.componentInstance.imageCropped.subscribe((image) => {
+      this.profile_image_preview = image.base64;
+      this.profile_image_file = image.file;
+      console.log(image.file);
+      this.profile_image_changed = true;
+    });
+    modalRef.result.then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  /*fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }*/
+
 
   submit() {
     this.isSubmitting = true;
     if (this.profile_image_changed) {
-      this.profileService.setProfilePic(this.profile_image_upload).subscribe(() => {
+      this.profileService.setProfilePic(this.profile_image_file).subscribe(() => {
         console.log('image upload done !');
         this.profileService.setProfile(this.student).subscribe(() => {
           console.log('profile updated !');
