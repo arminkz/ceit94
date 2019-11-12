@@ -1,0 +1,483 @@
+<app-nav [title]="'ویرایش پروفایل'">
+  <div *ngIf="!isLoaded" class="main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="spinner">
+          <div class="cube1"></div>
+          <div class="cube2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isLoaded" class="main">
+    <div class="container">
+      <!-- Login Box -->
+      <div class="row">
+        <div class="col-10 col-md-8 offset-md-2 offset-1 login-box">
+          <div class="spacer">
+          </div>
+
+          <div *ngIf="edit_subpage == 0">
+            <div class="row top-row">
+              <div class="col-1 offset-1">
+                <svg visibility="hidden" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
+                  <g transform="rotate(180 56.354 13.657)">
+                    <path id="Path_15" d="M112.148 15.009L100.4 26.753a1.913 1.913 0 0 1-2.705-2.7l10.392-10.392L97.7 3.265A1.913 1.913 0 1 1 100.4.56l11.749 11.74a1.912 1.912 0 0 1 0 2.7z" class="cls-1" data-name="Path 15"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="col-8">
+                <p>اطلاعات حساب</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-10 col-md-8 offset-1 offset-md-2">
+                <div class="row">
+                  <div class="col-9">
+                    <input [(ngModel)]="student.username" class="form-input form-control" type="input" spellcheck="false" placeholder="نام کاربری" disabled>
+                  </div>
+                  <div class="col-3">
+                    <p class="form-label">نام کاربری</p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-9">
+                    <input class="form-input form-control" type="password" spellcheck="false" placeholder="فعلا در دسترس نیست" disabled>
+                  </div>
+                  <div class="col-3">
+                    <p class="form-label">رمز عبور</p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-9">
+                    <input class="form-input form-control" type="password" spellcheck="false" placeholder="فعلا در دسترس نیست" disabled>
+                  </div>
+                  <div class="col-3">
+                    <p class="form-label">تکرار رمز عبور</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row button-row">
+              <div class="col-5 col-md-3 offset-6 offset-md-8">
+                <button class="button-next" (click)="nextPage()">
+                  <div class="row no-gutters align-content-center">
+                    <div class="col-6 offset-3">
+                      بعدی
+                    </div>
+                    <div class="col-3">
+                      <img src="../../../assets/arrow.svg" alt=""/>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- End of sub page 0 -->
+
+          <div *ngIf="edit_subpage == 1">
+            <div class="row top-row">
+              <div class="col-1 offset-1">
+                <svg (click)="previousPage()" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
+                  <g transform="rotate(180 56.354 13.657)">
+                    <path id="Path_15" d="M112.148 15.009L100.4 26.753a1.913 1.913 0 0 1-2.705-2.7l10.392-10.392L97.7 3.265A1.913 1.913 0 1 1 100.4.56l11.749 11.74a1.912 1.912 0 0 1 0 2.7z" class="cls-1" data-name="Path 15"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="col-8">
+                <p>اطلاعات اولیه</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-10 offset-1">
+                <div class="row">
+                  <div class="col-8 col-md-4 order-3 order-md-1">
+                    <input [(ngModel)]="student.lastname" class="form-input form-control" type="input" spellcheck="false" placeholder="نام خانوادگی">
+                  </div>
+                  <div class="col-4 col-md-2 order-4 order-md-2">
+                    <p class="form-label">نام خانوادگی</p>
+                  </div>
+
+                  <div class="col-8 col-md-4 order-1 order-md-3">
+                    <input [(ngModel)]="student.firstname" class="form-input form-control" type="input" spellcheck="false" placeholder="نام">
+                  </div>
+                  <div class="col-4 col-md-2 order-2 order-md-4">
+                    <p class="form-label">نام</p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-8">
+                    <div class="row no-gutters">
+                      <div class="col-4 date-input">
+                        <input [(ngModel)]="jalali_year" (change)="parseBirthday()" class="form-input form-control" type="input" spellcheck="false" placeholder="سال">
+                      </div>
+                      <div class="col-3 date-input">
+                        <input [(ngModel)]="jalali_month" (change)="parseBirthday()" class="form-input form-control" type="input" spellcheck="false" placeholder="ماه">
+                      </div>
+                      <div class="col-3 date-input">
+                        <input [(ngModel)]="jalali_day" (change)="parseBirthday()" class="form-input form-control" type="input" spellcheck="false" placeholder="روز">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-3 offset-1">
+                    <p class="form-label">تاریخ تولد (شمسی)</p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6 offset-3">
+                    <div class="row">
+                      <div class="col-center">
+                        <label for="file-upload">
+                          <div *ngIf="!student.profile_pic && !profile_image_preview" class="profile-pic-placeholder">
+                            <p>آپلود عکس</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45.282 42.098">
+                              <path d="M38.207 0H7.075A7.083 7.083 0 0 0 0 7.075v24.764a7.083 7.083 0 0 0 7.075 7.075h16.8a1.769 1.769 0 0 0 1.4-2.851l-4.627-5.979 12.827-16.311 8.27 9.865v2.983a1.769 1.769 0 1 0 3.538 0V7.075A7.083 7.083 0 0 0 38.207 0zm-3.42 9.83a1.769 1.769 0 0 0-2.746.043L18.419 27.2l-4.638-6a1.768 1.768 0 0 0-1.4-.686 1.768 1.768 0 0 0-1.4.69l-3.894 5.065a1.769 1.769 0 1 0 2.8 2.157l2.5-3.243 7.888 10.194h-13.2a3.542 3.542 0 0 1-3.538-3.538V7.075a3.542 3.542 0 0 1 3.538-3.537h31.132a3.542 3.542 0 0 1 3.538 3.538v11.055zm-22.4-3.463a5.306 5.306 0 1 0 5.306 5.306 5.312 5.312 0 0 0-5.311-5.305zm0 7.075a1.769 1.769 0 1 1 1.769-1.769 1.771 1.771 0 0 1-1.774 1.77zM45.282 33.7a1.769 1.769 0 0 1-1.769 1.769h-4.864v4.864a1.769 1.769 0 1 1-3.538 0v-4.868h-4.864a1.769 1.769 0 1 1 0-3.538h4.864v-4.864a1.769 1.769 0 1 1 3.538 0v4.864h4.864a1.769 1.769 0 0 1 1.769 1.773zm0 0"/>
+                            </svg>
+                          </div>
+                          <div *ngIf="student.profile_pic && !profile_image_changed" class="profile-pic-placeholder">
+                            <img [src]="student.profile_pic" />
+                          </div>
+                          <div *ngIf="profile_image_preview" class="profile-pic-placeholder">
+                            <img [src]="sanitizer.bypassSecurityTrustUrl(profile_image_preview)" />
+                          </div>
+                        </label>
+                        <input #file id="file-upload" type="file" accept='image/*' (change)="previewProfilePic($event)"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <p class="form-label">عکس پروفایل</p>
+                    <p class="form-label-detail">(حداکثر ۲ مگابایت)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row button-row">
+              <div class="col-5 col-md-3 offset-6 offset-md-8">
+                <button class="button-next" (click)="nextPage()">
+                  <div class="row no-gutters align-content-center">
+                    <div class="col-6 offset-3">
+                      بعدی
+                    </div>
+                    <div class="col-3">
+                      <img src="../../../assets/arrow.svg" alt=""/>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- End of sub page 1 -->
+
+          <div *ngIf="edit_subpage == 2">
+            <div class="row top-row">
+              <div class="col-1 offset-1">
+                <svg (click)="previousPage()" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
+                  <g transform="rotate(180 56.354 13.657)">
+                    <path id="Path_15" d="M112.148 15.009L100.4 26.753a1.913 1.913 0 0 1-2.705-2.7l10.392-10.392L97.7 3.265A1.913 1.913 0 1 1 100.4.56l11.749 11.74a1.912 1.912 0 0 1 0 2.7z" class="cls-1" data-name="Path 15"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="col-8">
+                <p>رنگ مورد علاقه</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-10 offset-1">
+                <div class="row">
+                  <div class="col-3 col-md-2">
+                    <div class="color-picker c1" [ngClass]="{'active' : student.fav_color == 1}" (click)="student.fav_color = 1" >
+                      <div class="inner"></div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-md-2">
+                    <div class="color-picker c2" [ngClass]="{'active' : student.fav_color == 2}" (click)="student.fav_color = 2">
+                      <div class="inner"></div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-md-2">
+                    <div class="color-picker c3" [ngClass]="{'active' : student.fav_color == 3}" (click)="student.fav_color = 3">
+                      <div class="inner"></div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-md-2">
+                    <div class="color-picker c4" [ngClass]="{'active' : student.fav_color == 4}" (click)="student.fav_color = 4">
+                      <div class="inner"></div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-md-2">
+                    <div class="color-picker c5" [ngClass]="{'active' : student.fav_color == 5}" (click)="student.fav_color = 5">
+                      <div class="inner"></div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-md-2">
+                    <div class="color-picker c6" [ngClass]="{'active' : student.fav_color == 6}" (click)="student.fav_color = 6">
+                      <div class="inner"></div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-md-2">
+                    <div class="color-picker c7" [ngClass]="{'active' : student.fav_color == 7}" (click)="student.fav_color = 7">
+                      <div class="inner"></div>
+                    </div>
+                  </div>
+                  <div class="col-3 col-md-2">
+                    <div class="color-picker c8" [ngClass]="{'active' : student.fav_color == 8}" (click)="student.fav_color = 8">
+                      <div class="inner"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row button-row">
+              <div class="col-5 col-md-3 offset-6 offset-md-8">
+                <button class="button-next" (click)="nextPage()">
+                  <div class="row no-gutters align-content-center">
+                    <div class="col-6 offset-3">
+                      بعدی
+                    </div>
+                    <div class="col-3">
+                      <img src="../../../assets/arrow.svg" alt=""/>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- End of sub page 2 -->
+
+          <div *ngIf="edit_subpage == 3">
+            <div class="row top-row">
+              <div class="col-1 offset-1">
+                <svg (click)="previousPage()" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
+                  <g transform="rotate(180 56.354 13.657)">
+                    <path id="Path_15" d="M112.148 15.009L100.4 26.753a1.913 1.913 0 0 1-2.705-2.7l10.392-10.392L97.7 3.265A1.913 1.913 0 1 1 100.4.56l11.749 11.74a1.912 1.912 0 0 1 0 2.7z" class="cls-1" data-name="Path 15"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="col-8">
+                <p>شبکه های اجتماعی</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-10 offset-1">
+
+                <div class="row no-gutters align-items-center form-input-box">
+                  <div class="col">
+                    <input [(ngModel)]="student.link_twitter" class="form-control form-control-lg" type="input" spellcheck="false" placeholder="لینک توییتر">
+                  </div>
+                  <div class="col-auto">
+                    <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" width="41.17" height="33.696" viewBox="0 0 41.17 33.696">
+                      <path d="M41.17 4.5c-2.59.119-2.533.11-2.826.134l1.534-4.38s-4.788 1.761-6 2.076a9.606 9.606 0 0 0-11.313-.91A7.835 7.835 0 0 0 18.8 9.477 20.9 20.9 0 0 1 5.259 1.855L4.124.491 3.275 2.05a9.418 9.418 0 0 0-1 6.34 9.109 9.109 0 0 0 .883 2.475l-.974-.378-.116 1.628a8.686 8.686 0 0 0 1.473 5.164 9.182 9.182 0 0 0 1.147 1.415l-.5-.077.612 1.866a9.069 9.069 0 0 0 4.662 5.4c-2.174.923-3.93 1.511-6.817 2.461L0 29.213l2.439 1.334A25.6 25.6 0 0 0 9.9 33.263c7.218 1.132 15.345.21 20.816-4.717 4.608-4.15 6.12-10.054 5.806-16.2a3.838 3.838 0 0 1 .717-2.5c1.022-1.364 3.921-5.34 3.928-5.349zm-5.857 3.9a6.251 6.251 0 0 0-1.2 4.067c.317 6.2-1.369 11-5.012 14.283-4.255 3.832-11.119 5.337-18.83 4.127a18.673 18.673 0 0 1-4.034-1.2 63.972 63.972 0 0 0 7.307-3l4.213-1.994-4.652-.3a6.579 6.579 0 0 1-5.224-2.976 8.344 8.344 0 0 0 1.771-.3l4.437-1.236-4.474-1.1a6.663 6.663 0 0 1-4.07-2.831 6.824 6.824 0 0 1-.882-1.946 11.168 11.168 0 0 0 1.815.29l4.141.41-3.275-2.546a6.906 6.906 0 0 1-2.617-7.277 24 24 0 0 0 16.912 7.279 14.283 14.283 0 0 0-.247-2.046 5.538 5.538 0 0 1 2.434-6.63 7.2 7.2 0 0 1 8.5.7 2.158 2.158 0 0 0 1.981.53 16.672 16.672 0 0 0 1.632-.5L34.9 7.183h1.328l-.913 1.221zm0 0"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="row no-gutters align-items-center form-input-box">
+                  <div class="col">
+                    <input [(ngModel)]="student.link_instagram" class="form-control form-control-lg" type="input" spellcheck="false" placeholder="لینک اینستاگرام">
+                  </div>
+                  <div class="col-auto">
+                    <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.18 36.18">
+                      <g id="Group_101" data-name="Group 101">
+                        <g id="Group_100" data-name="Group 100">
+                          <path id="Path_56" d="M24.874 0H11.306A11.307 11.307 0 0 0 0 11.306v13.568A11.307 11.307 0 0 0 11.306 36.18h13.568A11.307 11.307 0 0 0 36.18 24.874V11.306A11.307 11.307 0 0 0 24.874 0zm7.914 24.874a7.923 7.923 0 0 1-7.914 7.914H11.306a7.923 7.923 0 0 1-7.914-7.914V11.306a7.923 7.923 0 0 1 7.914-7.914h13.568a7.923 7.923 0 0 1 7.914 7.914z" class="cls-1" data-name="Path 56"/>
+                        </g>
+                      </g>
+                      <g id="Group_103" data-name="Group 103" transform="translate(9.045 9.045)">
+                        <path id="Path_57" d="M137.045 128a9.045 9.045 0 1 0 9.045 9.045 9.045 9.045 0 0 0-9.045-9.045zm0 14.7a5.653 5.653 0 1 1 5.653-5.653 5.661 5.661 0 0 1-5.653 5.653z" class="cls-1" data-name="Path 57" transform="translate(-128 -128)"/>
+                      </g>
+                      <g id="Group_105" data-name="Group 105" transform="translate(26.608 7.161)">
+                        <circle id="Ellipse_39" cx="1.205" cy="1.205" r="1.205" class="cls-1" data-name="Ellipse 39"/>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="row no-gutters align-items-center form-input-box">
+                  <div class="col">
+                    <input [(ngModel)]="student.link_linkedin" class="form-control form-control-lg" type="input" spellcheck="false" placeholder="لینک لینکدین">
+                  </div>
+                  <div class="col-auto">
+                    <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.18 36.18">
+                      <path id="li_il" d="M11.307 29.891H6.361v-15.97h4.946zM11.8 8.833a2.9 2.9 0 1 0-2.9 2.9 2.9 2.9 0 0 0 2.9-2.9zM29.82 21.1c0-4.287-.906-7.467-5.914-7.467a5.133 5.133 0 0 0-4.681 2.455v-2.167h-4.809v15.97h4.805v-7.93c0-2.077.529-4.088 3.1-4.088 2.539 0 2.621 2.375 2.621 4.22v7.8h4.878zm6.36 10.84V4.24A4.244 4.244 0 0 0 31.94 0H4.24A4.244 4.244 0 0 0 0 4.24v27.7a4.244 4.244 0 0 0 4.24 4.24h27.7a4.244 4.244 0 0 0 4.24-4.24zM31.94 2.827a1.415 1.415 0 0 1 1.414 1.413v27.7a1.415 1.415 0 0 1-1.413 1.413H4.24a1.415 1.415 0 0 1-1.413-1.413V4.24A1.415 1.415 0 0 1 4.24 2.827zm0 0"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="row no-gutters align-items-center form-input-box">
+                  <div class="col">
+                    <input [(ngModel)]="student.link_github" class="form-control form-control-lg" type="input" spellcheck="false" placeholder="لینک گیت هاب">
+                  </div>
+                  <div class="col-auto">
+                    <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.807 40.807">
+                      <path d="M20.4 0a20.4 20.4 0 1 0 20.4 20.483A20.542 20.542 0 0 0 20.4 0zm3.59 38.057a18.112 18.112 0 0 1-7.173 0v-5.595A3.4 3.4 0 0 1 17.654 30a26.148 26.148 0 0 0 1.482-2.176l-1.836-.287c-4.734-.693-6.6-3.156-7.341-5.069a8.131 8.131 0 0 1 1.267-7.794 1.442 1.442 0 0 0 .287-1.387 7.043 7.043 0 0 1-.072-3.515 10.907 10.907 0 0 1 3.659 1.745 1.718 1.718 0 0 0 1 .239 17.376 17.376 0 0 1 4.328-.622 14.651 14.651 0 0 1 3.993.574 1.725 1.725 0 0 0 1.291-.191 10.621 10.621 0 0 1 3.658-1.746 7.046 7.046 0 0 1-.072 3.515 1.44 1.44 0 0 0 .287 1.387 8.132 8.132 0 0 1 1.267 7.794c-.741 1.913-2.606 4.376-7.341 5.069l-1.841.287A25.569 25.569 0 0 0 23.153 30a3.4 3.4 0 0 1 .837 2.463zm2.391-.693v-4.9a5.734 5.734 0 0 0-.67-2.941c3.634-.98 6.217-3.132 7.365-6.217a10.513 10.513 0 0 0-1.363-9.8c.359-1.6.359-4.16-.5-5.356a1.867 1.867 0 0 0-1.578-.813h-.024a10.476 10.476 0 0 0-4.878 1.984 16.863 16.863 0 0 0-4.352-.574 16.516 16.516 0 0 0-4.28.574 10.563 10.563 0 0 0-5-1.984 1.834 1.834 0 0 0-1.501.808c-.861 1.2-.861 3.754-.5 5.356a10.522 10.522 0 0 0-1.363 9.8c1.148 3.084 3.73 5.237 7.365 6.217a5.2 5.2 0 0 0-.624 2.095 3.187 3.187 0 0 1-1.963.162 2.646 2.646 0 0 1-1.534-1.313c-.95-1.6-2.567-2.9-4.408-2.728l.21 2.382c.853-.078 1.7.824 2.142 1.568a4.922 4.922 0 0 0 5.507 2.454v3.224a18.013 18.013 0 1 1 11.955 0zm0 0"/>
+                    </svg>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+
+
+            <div class="row button-row">
+              <div class="col-5 col-md-3 offset-6 offset-md-8">
+                <button class="button-next" (click)="nextPage()">
+                  <div class="row no-gutters align-content-center">
+                    <div class="col-6 offset-3">
+                      بعدی
+                    </div>
+                    <div class="col-3">
+                      <img src="../../../assets/arrow.svg" alt=""/>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- End of sub page 3 -->
+
+
+          <div *ngIf="edit_subpage == 4">
+            <div class="row top-row">
+              <div class="col-1 offset-1">
+                <svg (click)="previousPage()" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
+                  <g transform="rotate(180 56.354 13.657)">
+                    <path id="Path_15" d="M112.148 15.009L100.4 26.753a1.913 1.913 0 0 1-2.705-2.7l10.392-10.392L97.7 3.265A1.913 1.913 0 1 1 100.4.56l11.749 11.74a1.912 1.912 0 0 1 0 2.7z" class="cls-1" data-name="Path 15"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="col-8">
+                <p>درباره من</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-10 offset-1">
+
+                <div class="row no-gutters align-items-center form-input-box">
+                  <div class="col">
+                    <textarea [(ngModel)]="student.bio" class="form-control form-control-lg" spellcheck="false" placeholder="درباره من"></textarea>
+                  </div>
+                  <div class="col-auto">
+                    <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.48 26.428">
+                      <path d="M142.7 14.24h.175a5.05 5.05 0 0 0 3.858-1.669c2.107-2.375 1.757-6.447 1.718-6.836-.137-2.917-1.516-4.313-2.654-4.964A6.085 6.085 0 0 0 142.851 0h-.093a6.094 6.094 0 0 0-2.944.75c-1.149.651-2.55 2.047-2.687 4.986-.038.389-.389 4.46 1.718 6.836a5.03 5.03 0 0 0 3.855 1.668zm-4.11-8.368c0-.016.005-.033.005-.044.181-3.924 2.966-4.345 4.159-4.345h.066c1.478.033 3.99.635 4.159 4.345a.107.107 0 0 0 .005.044c.005.038.389 3.76-1.352 5.719a3.587 3.587 0 0 1-2.819 1.171h-.055a3.575 3.575 0 0 1-2.813-1.171c-1.735-1.948-1.363-5.686-1.357-5.719z" transform="translate(-131.554)"/>
+                      <path d="M58.551 266.05v-.016c0-.044-.005-.088-.005-.137-.033-1.084-.1-3.618-2.479-4.428l-.055-.016a15.791 15.791 0 0 1-4.542-2.069.739.739 0 0 0-.848 1.21 17.045 17.045 0 0 0 5 2.282c1.275.454 1.417 1.817 1.456 3.065a1.1 1.1 0 0 0 .005.137 9.934 9.934 0 0 1-.115 1.691 20.141 20.141 0 0 1-9.649 2.244 20.257 20.257 0 0 1-9.654-2.249 9.4 9.4 0 0 1-.115-1.691c0-.044.005-.088.005-.137.038-1.248.181-2.611 1.456-3.065a17.2 17.2 0 0 0 5-2.282.739.739 0 0 0-.848-1.21 15.62 15.62 0 0 1-4.542 2.069c-.022.005-.038.011-.055.016-2.375.815-2.446 3.349-2.479 4.428a1.1 1.1 0 0 1-.005.137v.016a8.392 8.392 0 0 0 .279 2.479.7.7 0 0 0 .285.345 20.7 20.7 0 0 0 10.683 2.616A20.763 20.763 0 0 0 58 268.868a.732.732 0 0 0 .285-.345 8.8 8.8 0 0 0 .266-2.473z" transform="translate(-36.073 -245.056)"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="row no-gutters align-items-center form-input-box">
+                  <div class="col">
+                    <textarea [(ngModel)]="student.quote" class="form-control form-control-lg" spellcheck="false" placeholder="سخنی از من"></textarea>
+                  </div>
+                  <div class="col-auto">
+                    <svg class="form-input-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 32 24">
+                      <g id="quote" transform="translate(0 -4)">
+                        <path id="Path_60" d="M0 4v12h8a8.008 8.008 0 0 1-8 8v4a12.013 12.013 0 0 0 12-12V4z"/>
+                        <path id="Path_61" d="M20 4v12h8a8.008 8.008 0 0 1-8 8v4a12.013 12.013 0 0 0 12-12V4z"/>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div class="row button-row">
+              <div class="col-5 col-md-3 offset-6 offset-md-8">
+                <button class="button-next" (click)="nextPage()">
+                  <div class="row no-gutters align-content-center">
+                    <div class="col-6 offset-3">
+                      بعدی
+                    </div>
+                    <div class="col-3">
+                      <img src="../../../assets/arrow.svg" alt=""/>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- End of sub page 4 -->
+
+          <div *ngIf="edit_subpage == 9">
+            <div class="row top-row">
+              <div class="col-1 offset-1">
+                <svg *ngIf="!isSubmitting" (click)="previousPage()" class="back-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.569 27.314">
+                  <g transform="rotate(180 56.354 13.657)">
+                    <path id="Path_15" d="M112.148 15.009L100.4 26.753a1.913 1.913 0 0 1-2.705-2.7l10.392-10.392L97.7 3.265A1.913 1.913 0 1 1 100.4.56l11.749 11.74a1.912 1.912 0 0 1 0 2.7z" class="cls-1" data-name="Path 15"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="col-8">
+                <p>ذخیره تغییرات</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-10 offset-1">
+                <div class="row">
+                  <div *ngIf="isSubmitting" class="spinner spinner-red">
+                    <div class="cube1"></div>
+                    <div class="cube2"></div>
+                  </div>
+                  <div *ngIf="!isSubmitting" class="col-12">
+                    <p class="form-notice">برای ذخیره تغییرات روی دکمه زیر کلیک کنید.</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div *ngIf="isSubmitting" class="col-12 submit-info">
+                    <p class="form-notice">در حال ذخیره تغییرات...</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="!isSubmitting" class="row button-row">
+              <div class="col-5 col-md-3 offset-6 offset-md-8">
+                <button class="button-next" (click)="submit()">
+                  <div class="row no-gutters align-content-center">
+                    <div class="col-6 offset-3">
+                      ذخیره
+                    </div>
+                    <!--<div class="col-3">
+                      <img src="../../assets/arrow.svg" alt=""/>
+                    </div>-->
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- End of sub page 9 -->
+
+        </div>
+      </div>
+    </div>
+    <!-- End of Login Box -->
+
+    <!-- Page Counter -->
+    <div *ngIf="!isSubmitting" class="row pagination">
+      <div class="col-center">
+        <div *ngFor="let page of getPages()" class="page-circle" [ngClass]="{'active' : page}"></div>
+      </div>
+    </div>
+
+  </div>
+</app-nav>
+

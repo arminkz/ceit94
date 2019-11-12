@@ -1,0 +1,40 @@
+<!-- Modal -->
+<!--<div class="modal-header">
+  <h4 class="modal-title">Modal Title</h4>
+  <button type="button" class="close" aria-label="Close"
+          (click)="activeModal.dismiss('Cross click')">&times;
+  </button>
+</div>-->
+<div class="modal-body">
+  <div class="row">
+    <image-cropper class="cropper"
+      [imageChangedEvent]="imageChangedEvent"
+      [maintainAspectRatio]="true"
+      [aspectRatio]="4 / 4"
+      [resizeToWidth]="300"
+      outputType="both"
+      format="png"
+      (imageCropped)="imageCropChanged($event)"
+      (imageLoaded)="imageLoaded()"
+      (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"
+    ></image-cropper>
+  </div>
+  <div class="row">
+    <div class="col-5 col-md-3 offset-6 offset-md-8">
+      <button class="button-next" (click)="submit()">
+        <div class="row no-gutters align-content-center">
+          <div class="col">
+            تایید
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+</div>
+<!--<div class="modal-footer">
+  <button (click)="activeModal.dismiss('Close clicked')">
+    Close Clicked
+  </button>
+</div>-->

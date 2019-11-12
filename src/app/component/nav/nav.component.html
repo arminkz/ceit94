@@ -1,0 +1,30 @@
+<div class="wrapper wrapper-fs">
+
+  <!--Sidebar-->
+  <app-sidemenu #sideMenuComponent></app-sidemenu>
+
+  <!-- Top Nav -->
+  <div id="content">
+    <nav class="navbar navbar-dark fixed-top">
+      <a class="navbar-toggle-button" (click)="sideMenuComponent.toggle()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30.85" height="22.35" viewBox="0 0 48.213 34.928"><g transform="translate(-68.395 -70.536)"><rect width="48.213" height="5.547" rx="2.774" transform="translate(68.395 70.536)"/><rect width="38.094" height="5.547" rx="2.774" transform="translate(68.395 85.227)"/><rect width="24.404" height="5.547" rx="2.774" transform="translate(68.395 99.916)"/></g></svg>
+      </a>
+
+      <div class="navbar-nav navbar-center">
+        <p>{{title}}</p>
+      </div>
+
+      <a routerLink="/" >
+        <img class="navbar-logo" src="../../../assets/logo@2x.png" alt="CEIT 94"/>
+      </a>
+    </nav>
+
+    <!-- Content -->
+    <div [ngClass]="{'content-wrapper':topNav}">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <!-- Dark Overlay element -->
+  <div class="overlay" [ngClass]="{'active': sideMenuComponent.menu_activated}" ></div>
+</div>

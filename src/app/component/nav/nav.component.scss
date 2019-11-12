@@ -1,0 +1,19 @@
+@import "../../styles/sidebar";
+@import "../../styles/navbar";
+
+.content-wrapper {
+  margin-top: 88px;
+}
+
+.toggle-button{
+  position: fixed;
+  top: 30px;
+  left: 16px;
+
+  background: transparent;
+  border: none;
+
+  svg {
+    fill: #cecece;
+  }
+}

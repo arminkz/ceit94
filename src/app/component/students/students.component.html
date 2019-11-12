@@ -1,0 +1,56 @@
+<app-nav [title]="'ورودی های ۹۴'">
+  <div *ngIf="!isLoaded" class="main">
+    <div class="container">
+      <div class="row">
+        <div class="spinner">
+          <div class="cube1"></div>
+          <div class="cube2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isLoaded" class="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-10 col-md-10 col-lg-8 offset-1 offset-md-1 offset-lg-2">
+
+          <div class="row justify-content-center search-row">
+            <div class="col mid-col">
+              <!--Search Bar-->
+              <div class="row no-gutters align-items-center search-box">
+                <div class="col">
+                  <input [(ngModel)]="searchText" class="form-control form-control-lg" type="search" placeholder="جستجو">
+                </div>
+                <div class="col-auto">
+                  <svg class="search-icon" xmlns="http://www.w3.org/2000/svg"
+                       viewBox="0 0 37.016 37.016">
+                    <path d="M36.11 31.735l-8.041-8.041c-.043-.043-.093-.073-.138-.112a15.223 15.223 0 1 0-4.35 4.349c.04.045.07.095.112.137l8.042 8.042a3.093 3.093 0 0 0 4.375-4.375zm-20.892-6.574a9.943 9.943 0 1 1 9.943-9.943 9.943 9.943 0 0 1-9.943 9.943z" class="cls-1" data-name="Path 1"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row std-card-row justify-content-end">
+            <div *ngFor="let student of students | filter: searchText" (click)="clickedStudent(student)" class="col-3 col-md-2">
+              <div class="std-card" [ngClass]="getStudentColorClass(student)">
+                <img *ngIf="!student.profile_pic" src="../../../assets/profile.jpg" alt=""/>
+                <img *ngIf="student.profile_pic" [src]="student.profile_pic" alt=""/>
+                <div class="spacer" [ngClass]="getStudentColorClass(student)">
+                  <div class="spacer-wrap">
+                    <div class="spacer-inner"></div>
+                  </div>
+                </div>
+                <p>{{student.firstname}} {{student.lastname}}</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</app-nav>
+
+
