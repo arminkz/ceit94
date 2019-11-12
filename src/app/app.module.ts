@@ -58,7 +58,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    ImageCropComponent
+    ImageCropComponent,
+    UserSearchComponent
   ]
 })
 export class AppModule { }

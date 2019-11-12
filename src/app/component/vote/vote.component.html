@@ -19,7 +19,7 @@
             <div class="col-6">
               <div class="row no-gutters">
                 <div class="col-auto">
-                  <a *ngIf="!vote.voted_to" class="vote-button" data-toggle="modal" data-target="#exampleModal" (click)="selectedVote = vote">
+                  <a *ngIf="!vote.voted_to" class="vote-button" (click)="openFormModal(vote)">
                     <img src="../../../assets/add.svg" alt="add" />
                   </a>
                   <a *ngIf="vote.voted_to" class="vote-button" (click)="removeVote(vote)">
@@ -40,9 +40,5 @@
       </div>
     </div>
   </div>
-
-  <app-usersearch *ngIf="selectedVote"
-                  [voteName]="selectedVote.name" (selectedUser)="submitVote($event)">
-  </app-usersearch>
 </app-nav>
 

@@ -1,28 +1,26 @@
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div *ngIf="!isLoaded" class="modal-content main">
-      <div class="spinner">
-        <div class="cube1"></div>
-        <div class="cube2"></div>
+<div class="modal-body">
+  <div *ngIf="!isLoaded" class="main">
+    <div class="spinner">
+      <div class="cube1"></div>
+      <div class="cube2"></div>
+    </div>
+  </div>
+  <div *ngIf="isLoaded" class="modal-content main">
+    <!--Search Bar-->
+    <div class="row no-gutters align-items-center search-box">
+      <div class="col">
+        <input [(ngModel)]="searchText" class="form-control form-control-lg" type="search" placeholder="جستجو">
+      </div>
+      <div class="col-auto">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 37.016 37.016">
+          <path d="M36.11 31.735l-8.041-8.041c-.043-.043-.093-.073-.138-.112a15.223 15.223 0 1 0-4.35 4.349c.04.045.07.095.112.137l8.042 8.042a3.093 3.093 0 0 0 4.375-4.375zm-20.892-6.574a9.943 9.943 0 1 1 9.943-9.943 9.943 9.943 0 0 1-9.943 9.943z" class="cls-1" data-name="Path 1"/>
+        </svg>
       </div>
     </div>
-    <div *ngIf="isLoaded" class="modal-content main">
-      <!--Search Bar-->
-      <div class="row no-gutters align-items-center search-box">
-        <div class="col">
-          <input [(ngModel)]="searchText" class="form-control form-control-lg" type="search" placeholder="جستجو">
-        </div>
-        <div class="col-auto">
-          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 37.016 37.016">
-            <path d="M36.11 31.735l-8.041-8.041c-.043-.043-.093-.073-.138-.112a15.223 15.223 0 1 0-4.35 4.349c.04.045.07.095.112.137l8.042 8.042a3.093 3.093 0 0 0 4.375-4.375zm-20.892-6.574a9.943 9.943 0 1 1 9.943-9.943 9.943 9.943 0 0 1-9.943 9.943z" class="cls-1" data-name="Path 1"/>
-          </svg>
-        </div>
-      </div>
-      <button *ngFor="let student of students | filter: searchText" (click)="selectStudent(student)" data-dismiss="modal">
-        {{student.firstname}} {{student.lastname}}
-      </button>
-    </div>
+    <button *ngFor="let student of students | filter: searchText" (click)="selectStudent(student)" data-dismiss="modal">
+      {{student.firstname}} {{student.lastname}}
+    </button>
   </div>
 </div>

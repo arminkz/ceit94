@@ -4,6 +4,9 @@ import {Vote} from '../../models/vote.model';
 import {VoteService} from '../../services/vote.service';
 import {Student} from '../../models/student.model';
 import {HttpClient} from '@angular/common/http';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ImageCropComponent} from '../imagecrop/imagecrop.component';
+import {UserSearchComponent} from '../usersearch/usersearch.component';
 
 @Component({
   selector: 'app-vote',
@@ -18,7 +21,8 @@ export class VoteComponent implements OnInit {
   selectedVote: Vote;
 
   constructor(public auth: AuthService,
-              private voteService: VoteService) { }
+              private voteService: VoteService,
+              private modalService: NgbModal) { }
 
   ngOnInit() {
     this.voteService.getVotes().subscribe( (resp) => {
@@ -39,6 +43,14 @@ export class VoteComponent implements OnInit {
       // update UI
       this.selectedVote.voted_to = s;
     });
+  }
+
+  openFormModal(vote: Vote) {
+    console.log('must open user search');
+    this.selectedVote = vote;
+    const modalRef = this.modalService.open(UserSearchComponent);
+    modalRef.componentInstance.voteName = this.selectedVote.name;
+    modalRef.componentInstance.selectedUser.subscribe((s) => this.submitVote(s));
   }
 
 }
