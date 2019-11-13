@@ -402,7 +402,8 @@
               <div class="comment-sender">
                 <div class="row">
                   <div class="col-center">
-                    <img [src]="comment.commenter.profile_pic" alt=""/>
+                    <img *ngIf="comment.commenter.profile_pic" [src]="comment.commenter.profile_pic" alt=""/>
+                    <img *ngIf="!comment.commenter.profile_pic" src="../../../assets/profile.jpg" alt=""/>
                   </div>
                 </div>
                 <div class="row">
