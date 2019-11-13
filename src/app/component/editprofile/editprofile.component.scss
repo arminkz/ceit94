@@ -7,6 +7,11 @@
   background-color: #141414;
 }
 
+.login-box-row{
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
 .login-box {
   border-radius: 10.5px;
   padding: 0;
@@ -30,6 +35,12 @@
     text-align: center;
   }
 
+}
+
+@media screen and (max-width: 600px) {
+  .login-box {
+    margin-top: 30px;
+  }
 }
 
 .back-btn{
@@ -71,6 +82,12 @@
   color: #FFF;
   direction: rtl;
   text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+  .col-mb {
+    margin-bottom: 20px;
+  }
 }
 
 .form-label-detail {
@@ -244,8 +261,17 @@
 }
 
 .pagination{
-  margin-top: 35px;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .pagination{
+    display: none;
+  }
 }
 
 .page-circle {

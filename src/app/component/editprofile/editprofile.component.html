@@ -13,8 +13,8 @@
   <div *ngIf="isLoaded" class="main">
     <div class="container">
       <!-- Login Box -->
-      <div class="row">
-        <div class="col-10 col-md-8 offset-md-2 offset-1 login-box">
+      <div class="row login-box-row">
+        <div class="col-12 col-sm-10 col-md-8 offset-md-2 offset-sm-1 login-box">
           <div class="spacer">
           </div>
 
@@ -113,20 +113,20 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-8">
+                  <div class="col-12 col-md-8 order-2 order-md-1">
                     <div class="row no-gutters">
                       <div class="col-4 date-input">
                         <input [(ngModel)]="jalali_year" (change)="parseBirthday()" class="form-input form-control" type="input" spellcheck="false" placeholder="سال">
                       </div>
-                      <div class="col-3 date-input">
+                      <div class="col-4 col-md-3 date-input">
                         <input [(ngModel)]="jalali_month" (change)="parseBirthday()" class="form-input form-control" type="input" spellcheck="false" placeholder="ماه">
                       </div>
-                      <div class="col-3 date-input">
+                      <div class="col-4 col-md-3 date-input">
                         <input [(ngModel)]="jalali_day" (change)="parseBirthday()" class="form-input form-control" type="input" spellcheck="false" placeholder="روز">
                       </div>
                     </div>
                   </div>
-                  <div class="col-3 offset-1">
+                  <div class="col-12 col-md-3 offset-md-1 order-1 order-md-2 col-mb">
                     <p class="form-label">تاریخ تولد (شمسی)</p>
                   </div>
                 </div>
