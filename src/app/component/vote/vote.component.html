@@ -16,9 +16,9 @@
         <div class="col-10 col-md-10 col-lg-8 offset-1 offset-md-1 offset-lg-2">
 
           <div *ngFor="let vote of votes" class="row vote-row">
-            <div class="col-6">
+            <!--<div class="col-2 col-sm-6">
               <div class="row no-gutters">
-                <div class="col-auto">
+                <div class="col-12 col-sm-auto">
                   <a *ngIf="!vote.voted_to" class="vote-button" (click)="openFormModal(vote)">
                     <img src="../../../assets/add.svg" alt="add" />
                   </a>
@@ -30,8 +30,21 @@
                   <p *ngIf="vote.voted_to" class="vote-person">{{vote.voted_to.firstname}} {{vote.voted_to.lastname}}</p>
                 </div>
               </div>
+            </div>-->
+
+            <div class="col-auto order-2 order-sm-1">
+              <a *ngIf="!vote.voted_to" class="vote-button" (click)="openFormModal(vote)">
+                <img src="../../../assets/add.svg" alt="add" />
+              </a>
+              <a *ngIf="vote.voted_to" class="vote-button" (click)="removeVote(vote)">
+                <img src="../../../assets/remove.svg" alt="remove" />
+              </a>
             </div>
-            <div class="col-6">
+            <div class="col-auto order-3 order-sm-2">
+              <p *ngIf="vote.voted_to" class="vote-person">{{vote.voted_to.firstname}} {{vote.voted_to.lastname}}</p>
+            </div>
+
+            <div class="col-12 col-sm order-1 order-sm-3 col-bm">
               <p class="vote-title">{{vote.name}}</p>
             </div>
           </div>

@@ -25,6 +25,12 @@
   margin: 0;
 }
 
+@media screen and (max-width: 576px) {
+  .vote-title {
+    font-size: 16px;
+  }
+}
+
 .vote-title::before {
   content: '#';
   color: #AAA;
@@ -45,6 +51,13 @@
   margin-bottom: 0;
 }
 
+@media screen and (max-width: 576px) {
+  .vote-person {
+    font-size: 12px;
+    margin-left: 0;
+  }
+}
+
 .vote-button {
   padding-top: 10px;
   width:30px;
@@ -53,5 +66,11 @@
   img {
     width:30px;
     height: 30px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .col-bm {
+    margin-bottom: 15px;
   }
 }
