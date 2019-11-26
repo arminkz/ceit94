@@ -23,6 +23,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ImageCropComponent } from './component/imagecrop/imagecrop.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { QuestionDialogComponent } from './component/question-dialog/question-dialog.component';
+import { TwoDigitPipe } from './pipes/twodigit.pipe';
 
 @NgModule({
   declarations: [
@@ -34,13 +35,15 @@ import { QuestionDialogComponent } from './component/question-dialog/question-di
     EditprofileComponent,
     FilterPipe,
     PersianifyPipe,
+    TwoDigitPipe,
     NotFoundComponent,
     VoteComponent,
     UserSearchComponent,
     SideMenuComponent,
     NavComponent,
     ImageCropComponent,
-    QuestionDialogComponent
+    QuestionDialogComponent,
+    TwoDigitPipe
   ],
   imports: [
     NgbModule,

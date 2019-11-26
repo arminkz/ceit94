@@ -34,10 +34,9 @@
 <app-sidemenu #sideMenuComponent></app-sidemenu>
 
 <div class="lp-countdown">
-  <p class="lp-countdown-time" id="time">{{grad_hour}} : {{grad_min}} : {{grad_sec}}</p>
+  <p class="lp-countdown-time" id="time">{{grad_hour | twodigit}} : {{grad_min | twodigit}} : {{grad_sec | twodigit}}</p>
   <div class="lp-countdown-label ">
     <p>HOUR</p>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
     <span class="spacer"></span>
     <p>MIN</p>
     <span class="spacer"></span>
