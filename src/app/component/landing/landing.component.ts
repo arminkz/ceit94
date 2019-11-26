@@ -12,6 +12,7 @@ import * as confetti from 'canvas-confetti';
 })
 export class LandingComponent implements OnInit, OnDestroy {
   interval: any;
+  @ViewChild('canvas', { static: true }) canvas: ElementRef<HTMLCanvasElement>;
 
   grad_hour = 0;
   grad_min = 0;
@@ -71,7 +72,7 @@ export class LandingComponent implements OnInit, OnDestroy {
     this.grad_hour = 0;
     this.grad_min = 0;
     this.grad_sec = 0;
-    const confObject = confetti.create();
+    const confObject = confetti.create(this.canvas.nativeElement, { resize: true });
     setInterval(function() {
       confObject({
         startVelocity: 30,
