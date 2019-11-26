@@ -11,7 +11,7 @@ stg-build:
     - staging
   script:
     - npm install
-    - ng build
+    - npm run build -- --extra-webpack-config webpack.extra.js
     - rm -rf /var/www/stg-root/*
     - cp -r dist/ceit94/* /var/www/stg-root/
 
@@ -25,6 +25,6 @@ prod-build:
     - master
   script:
     - npm install
-    - ng build --prod
+    - npm run build -- --prod --extra-webpack-config webpack.extra.js
     - rm -rf /var/www/prod-root/*
     - cp -r dist/ceit94/* /var/www/prod-root/
