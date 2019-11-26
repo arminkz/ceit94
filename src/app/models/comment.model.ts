@@ -5,4 +5,5 @@ export class CommentModel {
   text: string;
   commented_at: number;
   commenter: Student;
+  deletable: boolean;
 }
