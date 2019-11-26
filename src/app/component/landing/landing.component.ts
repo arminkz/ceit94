@@ -1,6 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
+
+import * as moment from 'moment';
+import * as confetti from 'canvas-confetti';
 
 @Component({
   selector: 'app-landing',
@@ -8,10 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit, OnDestroy {
-
   interval: any;
-  now: Date;
-  grad_rem = 0;
 
   grad_hour = 0;
   grad_min = 0;
@@ -19,20 +19,32 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   constructor(
     public auth: AuthService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     // Graduation countdown
-    this.interval = setInterval(() => {
-      this.now = new Date();
-      this.grad_rem = new Date(2019, 11, 6).getTime() - this.now.getTime();
+    const eventTime = moment('28-11-2019 16:00:00', 'DD-MM-YYYY HH:mm:ss').unix();
+    const currentTime = moment().unix();
+    let diffTime = eventTime - currentTime;
+    if (diffTime > 0) {
+      this.updateCountdown(diffTime);
+    } else {
+      this.startConfetti();
+    }
 
-      this.grad_hour = Math.floor(this.grad_rem / (1000 * 3600));
-      this.grad_min = Math.floor(this.grad_rem / (1000 * 60)) - this.grad_hour * 60;
-      this.grad_sec = Math.floor(this.grad_rem / 1000) - this.grad_hour * 3600 - this.grad_min * 60;
-    }, 1000);
+    // Countdown
+    if (diffTime > 0) {
+      this.interval = setInterval(() => {
+        diffTime = diffTime - 1;
+        if (diffTime > 0) {
+          this.updateCountdown(diffTime);
+        } else {
+          clearInterval(this.interval);
+          this.startConfetti();
+        }
+      }, 1000);
+    }
 
     if (!(window.opener && window.opener !== window)) {
       // you are not in a popup
@@ -41,6 +53,37 @@ export class LandingComponent implements OnInit, OnDestroy {
         this.auth.login(this.route.snapshot.queryParams['code']);
       }
     }
+  }
+
+  updateCountdown(diff) {
+    const duration = moment.duration(diff * 1000, 'milliseconds');
+    const days = moment.duration(duration).days();
+    const hours = moment.duration(duration).hours();
+    const minutes = moment.duration(duration).minutes();
+    const seconds = moment.duration(duration).seconds();
+
+    this.grad_hour = days * 24 + hours;
+    this.grad_min = minutes;
+    this.grad_sec = seconds;
+  }
+
+  startConfetti() {
+    this.grad_hour = 0;
+    this.grad_min = 0;
+    this.grad_sec = 0;
+    const confObject = confetti.create();
+    setInterval(function() {
+      confObject({
+        startVelocity: 30,
+        spread: 360,
+        ticks: 60,
+        shapes: ['square'],
+        origin: {
+          x: Math.random(),
+          y: Math.random() - 0.2
+        }
+      });
+    }, 200);
   }
 
   ngOnDestroy() {
