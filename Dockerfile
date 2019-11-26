@@ -21,4 +21,4 @@ RUN npm install
 COPY . /app
 
 # build
-CMD ng build --prod
+CMD npm run build -- --prod --stats-json --extra-webpack-config webpack.extra.js
