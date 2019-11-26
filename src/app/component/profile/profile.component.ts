@@ -55,13 +55,11 @@ export class ProfileComponent implements OnInit , OnDestroy {
 
     this.studentService.getComments(id)
       .subscribe(resp => {
-        console.log('got comments');
         this.comments = resp;
       });
 
     this.voteService.getHashtags(id)
       .subscribe(resp => {
-        console.log('got hashtags');
         this.hashtags = resp;
       });
 
@@ -125,9 +123,13 @@ export class ProfileComponent implements OnInit , OnDestroy {
     modalRef.result.then((result) => {
       if (result === 'ok') {
         this.studentService.deleteComment(this.student.username, comment_id).subscribe(() => {
-          alert('deleted !');
+          // refetch comments
+          this.studentService.getComments(this.student.username)
+            .subscribe(resp => {
+              this.comments = resp;
+            });
         }, (error => {
-          alert(error);
+          console.log('error deleting comment');
         }));
       }
     });
