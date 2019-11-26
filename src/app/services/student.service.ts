@@ -28,4 +28,8 @@ export class StudentService {
     return this.http.post(environment.apiUrl + '/students/' + username + '/comments', {text: text});
   }
 
+  deleteComment(username: string, comment_id: string): Observable<any> {
+    return this.http.delete(environment.apiUrl + '/students/' + username + '/comments/' + comment_id);
+  }
+
 }

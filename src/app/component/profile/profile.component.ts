@@ -1,20 +1,22 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {StudentService} from '../../services/student.service';
 import {Student} from '../../models/student.model';
 import {CommentModel} from '../../models/comment.model';
 import {AuthService} from '../../services/auth.service';
-import {environment} from '../../../environments/environment';
-import {debounceTime, delay} from 'rxjs/operators';
 import * as moment from 'jalali-moment';
 import {ProfileService} from '../../services/profile.service';
 import {HashtagModel} from '../../models/hashtag.model';
 import {VoteService} from '../../services/vote.service';
+import {ImageCropComponent} from '../imagecrop/imagecrop.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {QuestionDialogComponent} from '../question-dialog/question-dialog.component';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProfileComponent implements OnInit , OnDestroy {
 
@@ -38,6 +40,7 @@ export class ProfileComponent implements OnInit , OnDestroy {
     private studentService: StudentService,
     private voteService: VoteService,
     private profileService: ProfileService,
+    private modalService: NgbModal,
     public auth: AuthService
   ) { }
 
@@ -100,6 +103,10 @@ export class ProfileComponent implements OnInit , OnDestroy {
     return classes;
   }
 
+  navigateToProfile(std: Student) {
+    this.router.navigateByUrl('/profile/' + std.username);
+  }
+
   sendComment(str: string) {
     this.studentService.sendComment(this.student.username, str)
       .subscribe(() => {
@@ -111,6 +118,19 @@ export class ProfileComponent implements OnInit , OnDestroy {
         // clear textarea
         this.commentText = '';
       });
+  }
+
+  deleteComment(comment_id: string) {
+    const modalRef = this.modalService.open(QuestionDialogComponent);
+    modalRef.result.then((result) => {
+      if (result === 'ok') {
+        this.studentService.deleteComment(this.student.username, comment_id).subscribe(() => {
+          alert('deleted !');
+        }, (error => {
+          alert(error);
+        }));
+      }
+    });
   }
 
 }

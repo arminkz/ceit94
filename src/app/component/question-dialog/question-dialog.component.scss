@@ -1,0 +1,28 @@
+.modal-body {
+  background-color: #1e1e1e;
+}
+
+.fa {
+  color: #FFF;
+  font-family: IRANSans;
+  font-size: 15px;
+}
+
+button {
+  background-color: #c60139;
+  direction: rtl;
+  width: 100%;
+  font-family: IRANSans;
+  font-size: 15px;
+  padding: 9px;
+  border-radius: 45px;
+  color: #FFF;
+  border: solid 1px #c60139;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+button.cancel {
+  background-color: #1c1c1c;
+}

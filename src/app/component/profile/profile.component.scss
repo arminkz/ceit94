@@ -569,8 +569,9 @@ $section-space : 20px;
   background-color: #1d1d1d;
   min-height: 80px;
   border-radius: 17.5px;
-  padding: 10px 20px;
-  p{
+
+  .text{
+    padding: 10px 20px;
     font-family: IRANSans;
     font-size: 17.5px;
     color: #cdcdcd;
@@ -594,6 +595,32 @@ $section-space : 20px;
   textarea:focus {
     outline: none;
   }
+
+  .comment-button-row {
+    padding: 15px;
+  }
+
+  .comment-button {
+    background: transparent;
+    border: none;
+
+    svg {
+      fill: #a6a6a6;
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .comment-button:hover {
+    svg{
+      fill: #FFF;
+    }
+  }
+}
+
+.popover-fa {
+  font-family: IRANSans;
+  font-size: 14px;
 }
 
 button.button-send {

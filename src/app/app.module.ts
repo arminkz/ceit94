@@ -22,6 +22,7 @@ import { NavComponent } from './component/nav/nav.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ImageCropComponent } from './component/imagecrop/imagecrop.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { QuestionDialogComponent } from './component/question-dialog/question-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     UserSearchComponent,
     SideMenuComponent,
     NavComponent,
-    ImageCropComponent
+    ImageCropComponent,
+    QuestionDialogComponent
   ],
   imports: [
     NgbModule,
@@ -59,7 +61,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   bootstrap: [AppComponent],
   entryComponents: [
     ImageCropComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    QuestionDialogComponent
   ]
 })
 export class AppModule { }
